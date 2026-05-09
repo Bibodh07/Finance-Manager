@@ -1,0 +1,110 @@
+/* ===== Main layout ===== */
+.mainBody {
+  width: 100%;
+  max-width: 500px;
+  margin: 60px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== Input ===== */
+.searchBar {
+  padding: 12px 14px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.searchBar:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+/* ===== Button ===== */
+.searchButton {
+  padding: 12px 14px;
+  font-size: 16px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.searchButton:hover {
+  background-color: #357bd8;
+  transform: translateY(-1px);
+}
+
+/* ===== Dropdown wrapper ===== */
+.DropDown {
+  position: relative;
+  width: 100%;
+}
+
+/* ===== Selected box ===== */
+.selected {
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: 0.2s;
+  user-select: none;
+}
+
+.selected:hover {
+  border-color: #4a90e2;
+}
+
+/* ===== Dropdown list (hidden by default animation-ready) ===== */
+.dropdownList {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 6px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: 10;
+
+  /* smooth animation */
+  animation: dropFade 0.15s ease-in-out;
+}
+
+/* ===== Dropdown item ===== */
+.dropdownItem {
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.dropdownItem:hover {
+  background-color: #f3f6fb;
+}
+
+/* ===== Open state effect (optional enhancement) ===== */
+.DropDown.open .selected {
+  border-color: #4a90e2;
+}
+
+/* ===== Animation ===== */
+@keyframes dropFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

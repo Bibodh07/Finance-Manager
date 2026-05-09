@@ -1,0 +1,53 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+
+
+
+
+body{
+
+  background-color: #e7ecef;
+
+}
+.mainBody{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1rem;
+  
+}
+
+.navBar {
+ 
+  position: sticky;
+  top: 0;
+  width: 90vw;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  
+
+  /* glass effect */
+  background: rgba(255, 255, 255, 0.5); /* semi-transparent */
+  backdrop-filter: blur(20px);          /* frosted glass blur */
+  -webkit-backdrop-filter: blur(10px);  /* Safari support */
+  border-radius: 12px;
+  border: 1px solid  rgba(255, 255, 255, 0.5); /* subtle outline */
+  
+}
+
+.Header{
+
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3rem;
+
+
+}
