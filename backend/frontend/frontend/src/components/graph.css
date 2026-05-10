@@ -1,0 +1,29 @@
+.Graph {
+  width: 50vw;           /* Make it responsive to page */
+  height: 50vh;
+  margin: 20px auto;    /* Center horizontally with some top margin */
+  padding: 20px;        /* Some breathing space */
+  background-color: #1e1e1e; /* Dark background if your site is black theme */
+  border-radius: 12px;  /* Rounded corners for style */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+  color: #fff;          /* Text color for title */
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.Graph h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+  color: #f0f0f0;
+}
+
+/* Optional: override tooltip styles */
+.recharts-tooltip-wrapper {
+  background-color: #333 !important;
+  color: #fff !important;
+  border-radius: 8px;
+  font-size: 14px;
+  padding: 10px !important;
+}
