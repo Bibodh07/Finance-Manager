@@ -112,17 +112,22 @@ def getStartingElo(teamName: str):
     uncommented = re.sub(r'<!--(.*?)-->', r'\1', req.text, flags=re.DOTALL)
     html = BeautifulSoup(uncommented, "lxml")
 
+    # advanced table
     advanced_table = html.find("table", id="advanced")
 
+    # SRS from meta div
+    srs_tag = html.find("a", href="/about/glossary.html#srs")
+    srs_value = srs_tag.parent.parent.get_text().split(":")[1].strip().split()[0]
+
     stats = {
-        "team": teamName,
-        "ws":      advanced_table.find_all("td", {"data-stat": "ws"})[-1].get_text(),
+        "team":     teamName,
+        "ws":       advanced_table.find_all("td", {"data-stat": "ws"})[-1].get_text(),
         "ws_per48": advanced_table.find_all("td", {"data-stat": "ws_per_48"})[-1].get_text(),
-        "bpm":     advanced_table.find_all("td", {"data-stat": "bpm"})[-1].get_text(),
+        "bpm":      advanced_table.find_all("td", {"data-stat": "bpm"})[-1].get_text(),
+        "srs":      float(srs_value)
     }
 
     return stats
-
 
 def retryFailed(failed: list, results: list) -> list:
     for team in failed:

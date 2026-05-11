@@ -3,20 +3,6 @@ import httpx
 import json
 import regex as re
 import pandas as pd
-import time
-
-
-NBA_TEAMS = [
-    "ATL", "BOS", "BRK", "CHO", "CHI",
-    "CLE", "DAL", "DEN", "DET", "GSW",
-    "HOU", "IND", "LAC", "LAL", "MEM",
-    "MIA", "MIL", "MIN", "NOP", "NYK",
-    "OKC", "ORL", "PHI", "PHO", "POR",
-    "SAC", "SAS", "TOR", "UTA", "WAS"
-]
-
-
-
 
 def convert_streak(x):
     parts = x.split()
@@ -98,8 +84,10 @@ def get_team_games(team_code):
 
 
 
-def getStartingElo(teamName: str):
-    url = f"https://www.basketball-reference.com/teams/{teamName}/2026.html"
+
+def getStartingElo():
+    url = "https://www.basketball-reference.com/teams/GSW/2026.html"
+
     headers = {
         "User-Agent": (
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -109,72 +97,18 @@ def getStartingElo(teamName: str):
     }
 
     req = httpx.get(url, headers=headers)
+    
+    # Uncomment hidden tables
     uncommented = re.sub(r'<!--(.*?)-->', r'\1', req.text, flags=re.DOTALL)
     html = BeautifulSoup(uncommented, "lxml")
 
     advanced_table = html.find("table", id="advanced")
+    
+    df = pd.read_html(str(advanced_table))[0]
+    df = df[df["Player"] != "Team Totals"].reset_index(drop=True)
+    df = df[["Player", "WS", "WS/48", "BPM"]]
+    
+    return df
 
-    stats = {
-        "team": teamName,
-        "ws":      advanced_table.find_all("td", {"data-stat": "ws"})[-1].get_text(),
-        "ws_per48": advanced_table.find_all("td", {"data-stat": "ws_per_48"})[-1].get_text(),
-        "bpm":     advanced_table.find_all("td", {"data-stat": "bpm"})[-1].get_text(),
-    }
-
-    return stats
-
-
-def retryFailed(failed: list, results: list) -> list:
-    for team in failed:
-        if any(r["team"] == team for r in results):
-            continue
-        try:
-            print(f"Retrying {team}...")
-            data = getStartingElo(team)
-            results.append(data)
-            with open("elo_data.json", "w") as f:
-                json.dump(results, f, indent=4)
-            time.sleep(15)
-        except Exception as e:
-            print(f"Failed again on {team}: {e}")
-    return results
-
-
-def getAllTeamsElo() -> list[dict]:
-    results = []
-    failed = []
-
-    try:
-        with open("elo_data.json", "r") as f:
-            results = json.load(f)
-            print(f"Loaded {len(results)} existing teams from file")
-    except FileNotFoundError:
-        pass
-
-    for team in NBA_TEAMS:
-        if any(r["team"] == team for r in results):
-            print(f"Skipping {team}, already scraped")
-            continue
-        try:
-            print(f"Scraping {team}...")
-            data = getStartingElo(team)
-            results.append(data)
-            with open("elo_data.json", "w") as f:
-                json.dump(results, f, indent=4)
-            time.sleep(4)
-        except Exception as e:
-            print(f"Failed on {team}: {e}")
-            failed.append(team)
-            continue
-
-    return results, failed
-
-
-results, failed = getAllTeamsElo()
-print(f"\nScraped {len(results)}/30 teams")
-print(f"Failed: {failed}")
-
-if failed:
-    results = retryFailed(failed, results)
-    print(f"\nFinal: {len(results)}/30 teams")
+print(getStartingElo())
 

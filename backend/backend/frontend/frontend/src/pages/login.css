@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  background: #0b1220;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  display: block;
+}
+
+/* Center login like a card on dashboard */
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main login card (matches your investmentBoard vibe) */
+.card {
+  width: 320px;
+  padding: 25px;
+
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+
+  color: white;
+  text-align: center;
+}
+
+/* Title */
+.card h1 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  color: white;
+}
+
+/* Inputs (match your dark UI) */
+.input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  background: #111827;
+  color: white;
+
+  outline: none;
+}
+
+/* Focus effect */
+.input:focus {
+  border: 1px solid #2563eb;
+}
+
+/* Button matches dashboard feel */
+.btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #2563eb;
+  color: white;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #1d4ed8;
+}
+
+/* Status messages */
+.success {
+  color: #22c55e;
+  margin-top: 10px;
+}
+
+.error {
+  color: #ef4444;
+  margin-top: 10px;
+}

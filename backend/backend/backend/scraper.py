@@ -41,39 +41,10 @@ def getStartingElo_comment():
             df = df[df["Player"] != "Team Totals"].reset_index(drop=True)
             df = df[["Player", "WS", "WS/48", "BPM"]]
             return df
-        
-def getSRS(teamName: str) -> float:
-    url = f"https://www.basketball-reference.com/teams/{teamName}/2026.html"
-    headers = {
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/136.0.0.0 Safari/537.36"
-        )
-    }
-    req = httpx.get(url, headers=headers)
-    html = BeautifulSoup(req.text, "lxml")
-
-    # find the anchor tag that links to SRS glossary
-    srs_tag = html.find("a", href="/about/glossary.html#srs")
-    
-    # get the parent p tag text and extract the number
-    srs_text = srs_tag.parent.parent.get_text()
-    srs_value = srs_text.split(":")[1].strip().split()[0]
-    
-    return {"team": teamName, "srs": float(srs_value)}
-
-print(getSRS("GSW"))
-        
-   
-       
-            
-
-
-
 
 # # Test both
 # print("=== REGEX METHOD ===")
 # print(getStartingElo_regex())
 
-getSRS()
+print("\n=== BS4 COMMENT METHOD ===")
+print(getStartingElo_comment())
