@@ -2,801 +2,961 @@
     {
         "visitor": {
             "team": "Houston Rockets",
-            "score": "124"
+            "score": "124",
+            "date": "Tue, Oct 21, 2025"
         },
         "home": {
             "team": "Oklahoma City Thunder",
-            "score": "125"
+            "score": "125",
+            "date": "Tue, Oct 21, 2025"
         }
     },
     {
         "visitor": {
             "team": "Golden State Warriors",
-            "score": "119"
+            "score": "119",
+            "date": "Tue, Oct 21, 2025"
         },
         "home": {
             "team": "Los Angeles Lakers",
-            "score": "109"
+            "score": "109",
+            "date": "Tue, Oct 21, 2025"
         }
     },
     {
         "visitor": {
             "team": "Brooklyn Nets",
-            "score": "117"
+            "score": "117",
+            "date": "Wed, Oct 22, 2025"
         },
         "home": {
             "team": "Charlotte Hornets",
-            "score": "136"
+            "score": "136",
+            "date": "Wed, Oct 22, 2025"
         }
     },
     {
         "visitor": {
             "team": "Cleveland Cavaliers",
-            "score": "111"
+            "score": "111",
+            "date": "Wed, Oct 22, 2025"
         },
         "home": {
             "team": "New York Knicks",
-            "score": "119"
+            "score": "119",
+            "date": "Wed, Oct 22, 2025"
         }
     },
     {
         "visitor": {
             "team": "Miami Heat",
-            "score": "121"
+            "score": "121",
+            "date": "Wed, Oct 22, 2025"
         },
         "home": {
             "team": "Orlando Magic",
-            "score": "125"
+            "score": "125",
+            "date": "Wed, Oct 22, 2025"
         }
     },
     {
         "visitor": {
             "team": "Philadelphia 76ers",
-            "score": "117"
+            "score": "117",
+            "date": "Wed, Oct 22, 2025"
         },
         "home": {
             "team": "Boston Celtics",
-            "score": "116"
+            "score": "116",
+            "date": "Wed, Oct 22, 2025"
         }
     },
     {
         "visitor": {
             "team": "Toronto Raptors",
-            "score": "138"
+            "score": "138",
+            "date": "Wed, Oct 22, 2025"
         },
         "home": {
             "team": "Atlanta Hawks",
-            "score": "118"
+            "score": "118",
+            "date": "Wed, Oct 22, 2025"
         }
     },
     {
         "visitor": {
             "team": "Detroit Pistons",
-            "score": "111"
+            "score": "111",
+            "date": "Wed, Oct 22, 2025"
         },
         "home": {
             "team": "Chicago Bulls",
-            "score": "115"
+            "score": "115",
+            "date": "Wed, Oct 22, 2025"
         }
     },
     {
         "visitor": {
             "team": "New Orleans Pelicans",
-            "score": "122"
+            "score": "122",
+            "date": "Wed, Oct 22, 2025"
         },
         "home": {
             "team": "Memphis Grizzlies",
-            "score": "128"
+            "score": "128",
+            "date": "Wed, Oct 22, 2025"
         }
     },
     {
         "visitor": {
             "team": "Washington Wizards",
-            "score": "120"
+            "score": "120",
+            "date": "Wed, Oct 22, 2025"
         },
         "home": {
             "team": "Milwaukee Bucks",
-            "score": "133"
+            "score": "133",
+            "date": "Wed, Oct 22, 2025"
         }
     },
     {
         "visitor": {
             "team": "Los Angeles Clippers",
-            "score": "108"
+            "score": "108",
+            "date": "Wed, Oct 22, 2025"
         },
         "home": {
             "team": "Utah Jazz",
-            "score": "129"
+            "score": "129",
+            "date": "Wed, Oct 22, 2025"
         }
     },
     {
         "visitor": {
             "team": "San Antonio Spurs",
-            "score": "125"
+            "score": "125",
+            "date": "Wed, Oct 22, 2025"
         },
         "home": {
             "team": "Dallas Mavericks",
-            "score": "92"
+            "score": "92",
+            "date": "Wed, Oct 22, 2025"
         }
     },
     {
         "visitor": {
             "team": "Minnesota Timberwolves",
-            "score": "118"
+            "score": "118",
+            "date": "Wed, Oct 22, 2025"
         },
         "home": {
             "team": "Portland Trail Blazers",
-            "score": "114"
+            "score": "114",
+            "date": "Wed, Oct 22, 2025"
         }
     },
     {
         "visitor": {
             "team": "Sacramento Kings",
-            "score": "116"
+            "score": "116",
+            "date": "Wed, Oct 22, 2025"
         },
         "home": {
             "team": "Phoenix Suns",
-            "score": "120"
+            "score": "120",
+            "date": "Wed, Oct 22, 2025"
         }
     },
     {
         "visitor": {
             "team": "Oklahoma City Thunder",
-            "score": "141"
+            "score": "141",
+            "date": "Thu, Oct 23, 2025"
         },
         "home": {
             "team": "Indiana Pacers",
-            "score": "135"
+            "score": "135",
+            "date": "Thu, Oct 23, 2025"
         }
     },
     {
         "visitor": {
             "team": "Denver Nuggets",
-            "score": "131"
+            "score": "131",
+            "date": "Thu, Oct 23, 2025"
         },
         "home": {
             "team": "Golden State Warriors",
-            "score": "137"
+            "score": "137",
+            "date": "Thu, Oct 23, 2025"
         }
     },
     {
         "visitor": {
             "team": "Milwaukee Bucks",
-            "score": "122"
+            "score": "122",
+            "date": "Fri, Oct 24, 2025"
         },
         "home": {
             "team": "Toronto Raptors",
-            "score": "116"
+            "score": "116",
+            "date": "Fri, Oct 24, 2025"
         }
     },
     {
         "visitor": {
             "team": "Atlanta Hawks",
-            "score": "111"
+            "score": "111",
+            "date": "Fri, Oct 24, 2025"
         },
         "home": {
             "team": "Orlando Magic",
-            "score": "107"
+            "score": "107",
+            "date": "Fri, Oct 24, 2025"
         }
     },
     {
         "visitor": {
             "team": "Cleveland Cavaliers",
-            "score": "131"
+            "score": "131",
+            "date": "Fri, Oct 24, 2025"
         },
         "home": {
             "team": "Brooklyn Nets",
-            "score": "124"
+            "score": "124",
+            "date": "Fri, Oct 24, 2025"
         }
     },
     {
         "visitor": {
             "team": "Boston Celtics",
-            "score": "95"
+            "score": "95",
+            "date": "Fri, Oct 24, 2025"
         },
         "home": {
             "team": "New York Knicks",
-            "score": "105"
+            "score": "105",
+            "date": "Fri, Oct 24, 2025"
         }
     },
     {
         "visitor": {
             "team": "Detroit Pistons",
-            "score": "115"
+            "score": "115",
+            "date": "Fri, Oct 24, 2025"
         },
         "home": {
             "team": "Houston Rockets",
-            "score": "111"
+            "score": "111",
+            "date": "Fri, Oct 24, 2025"
         }
     },
     {
         "visitor": {
             "team": "San Antonio Spurs",
-            "score": "120"
+            "score": "120",
+            "date": "Fri, Oct 24, 2025"
         },
         "home": {
             "team": "New Orleans Pelicans",
-            "score": "116"
+            "score": "116",
+            "date": "Fri, Oct 24, 2025"
         }
     },
     {
         "visitor": {
             "team": "Miami Heat",
-            "score": "146"
+            "score": "146",
+            "date": "Fri, Oct 24, 2025"
         },
         "home": {
             "team": "Memphis Grizzlies",
-            "score": "114"
+            "score": "114",
+            "date": "Fri, Oct 24, 2025"
         }
     },
     {
         "visitor": {
             "team": "Washington Wizards",
-            "score": "117"
+            "score": "117",
+            "date": "Fri, Oct 24, 2025"
         },
         "home": {
             "team": "Dallas Mavericks",
-            "score": "107"
+            "score": "107",
+            "date": "Fri, Oct 24, 2025"
         }
     },
     {
         "visitor": {
             "team": "Minnesota Timberwolves",
-            "score": "110"
+            "score": "110",
+            "date": "Fri, Oct 24, 2025"
         },
         "home": {
             "team": "Los Angeles Lakers",
-            "score": "128"
+            "score": "128",
+            "date": "Fri, Oct 24, 2025"
         }
     },
     {
         "visitor": {
             "team": "Golden State Warriors",
-            "score": "119"
+            "score": "119",
+            "date": "Fri, Oct 24, 2025"
         },
         "home": {
             "team": "Portland Trail Blazers",
-            "score": "139"
+            "score": "139",
+            "date": "Fri, Oct 24, 2025"
         }
     },
     {
         "visitor": {
             "team": "Utah Jazz",
-            "score": "104"
+            "score": "104",
+            "date": "Fri, Oct 24, 2025"
         },
         "home": {
             "team": "Sacramento Kings",
-            "score": "105"
+            "score": "105",
+            "date": "Fri, Oct 24, 2025"
         }
     },
     {
         "visitor": {
             "team": "Phoenix Suns",
-            "score": "102"
+            "score": "102",
+            "date": "Fri, Oct 24, 2025"
         },
         "home": {
             "team": "Los Angeles Clippers",
-            "score": "129"
+            "score": "129",
+            "date": "Fri, Oct 24, 2025"
         }
     },
     {
         "visitor": {
             "team": "Chicago Bulls",
-            "score": "110"
+            "score": "110",
+            "date": "Sat, Oct 25, 2025"
         },
         "home": {
             "team": "Orlando Magic",
-            "score": "98"
+            "score": "98",
+            "date": "Sat, Oct 25, 2025"
         }
     },
     {
         "visitor": {
             "team": "Oklahoma City Thunder",
-            "score": "117"
+            "score": "117",
+            "date": "Sat, Oct 25, 2025"
         },
         "home": {
             "team": "Atlanta Hawks",
-            "score": "100"
+            "score": "100",
+            "date": "Sat, Oct 25, 2025"
         }
     },
     {
         "visitor": {
             "team": "Charlotte Hornets",
-            "score": "121"
+            "score": "121",
+            "date": "Sat, Oct 25, 2025"
         },
         "home": {
             "team": "Philadelphia 76ers",
-            "score": "125"
+            "score": "125",
+            "date": "Sat, Oct 25, 2025"
         }
     },
     {
         "visitor": {
             "team": "Indiana Pacers",
-            "score": "103"
+            "score": "103",
+            "date": "Sat, Oct 25, 2025"
         },
         "home": {
             "team": "Memphis Grizzlies",
-            "score": "128"
+            "score": "128",
+            "date": "Sat, Oct 25, 2025"
         }
     },
     {
         "visitor": {
             "team": "Phoenix Suns",
-            "score": "111"
+            "score": "111",
+            "date": "Sat, Oct 25, 2025"
         },
         "home": {
             "team": "Denver Nuggets",
-            "score": "133"
+            "score": "133",
+            "date": "Sat, Oct 25, 2025"
         }
     },
     {
         "visitor": {
             "team": "Brooklyn Nets",
-            "score": "107"
+            "score": "107",
+            "date": "Sun, Oct 26, 2025"
         },
         "home": {
             "team": "San Antonio Spurs",
-            "score": "118"
+            "score": "118",
+            "date": "Sun, Oct 26, 2025"
         }
     },
     {
         "visitor": {
             "team": "Boston Celtics",
-            "score": "113"
+            "score": "113",
+            "date": "Sun, Oct 26, 2025"
         },
         "home": {
             "team": "Detroit Pistons",
-            "score": "119"
+            "score": "119",
+            "date": "Sun, Oct 26, 2025"
         }
     },
     {
         "visitor": {
             "team": "Charlotte Hornets",
-            "score": "139"
+            "score": "139",
+            "date": "Sun, Oct 26, 2025"
         },
         "home": {
             "team": "Washington Wizards",
-            "score": "113"
+            "score": "113",
+            "date": "Sun, Oct 26, 2025"
         }
     },
     {
         "visitor": {
             "team": "New York Knicks",
-            "score": "107"
+            "score": "107",
+            "date": "Sun, Oct 26, 2025"
         },
         "home": {
             "team": "Miami Heat",
-            "score": "115"
+            "score": "115",
+            "date": "Sun, Oct 26, 2025"
         }
     },
     {
         "visitor": {
             "team": "Milwaukee Bucks",
-            "score": "113"
+            "score": "113",
+            "date": "Sun, Oct 26, 2025"
         },
         "home": {
             "team": "Cleveland Cavaliers",
-            "score": "118"
+            "score": "118",
+            "date": "Sun, Oct 26, 2025"
         }
     },
     {
         "visitor": {
             "team": "Indiana Pacers",
-            "score": "110"
+            "score": "110",
+            "date": "Sun, Oct 26, 2025"
         },
         "home": {
             "team": "Minnesota Timberwolves",
-            "score": "114"
+            "score": "114",
+            "date": "Sun, Oct 26, 2025"
         }
     },
     {
         "visitor": {
             "team": "Toronto Raptors",
-            "score": "129"
+            "score": "129",
+            "date": "Sun, Oct 26, 2025"
         },
         "home": {
             "team": "Dallas Mavericks",
-            "score": "139"
+            "score": "139",
+            "date": "Sun, Oct 26, 2025"
         }
     },
     {
         "visitor": {
             "team": "Los Angeles Lakers",
-            "score": "127"
+            "score": "127",
+            "date": "Sun, Oct 26, 2025"
         },
         "home": {
             "team": "Sacramento Kings",
-            "score": "120"
+            "score": "120",
+            "date": "Sun, Oct 26, 2025"
         }
     },
     {
         "visitor": {
             "team": "Portland Trail Blazers",
-            "score": "107"
+            "score": "107",
+            "date": "Sun, Oct 26, 2025"
         },
         "home": {
             "team": "Los Angeles Clippers",
-            "score": "114"
+            "score": "114",
+            "date": "Sun, Oct 26, 2025"
         }
     },
     {
         "visitor": {
             "team": "Cleveland Cavaliers",
-            "score": "116"
+            "score": "116",
+            "date": "Mon, Oct 27, 2025"
         },
         "home": {
             "team": "Detroit Pistons",
-            "score": "95"
+            "score": "95",
+            "date": "Mon, Oct 27, 2025"
         }
     },
     {
         "visitor": {
             "team": "Orlando Magic",
-            "score": "124"
+            "score": "124",
+            "date": "Mon, Oct 27, 2025"
         },
         "home": {
             "team": "Philadelphia 76ers",
-            "score": "136"
+            "score": "136",
+            "date": "Mon, Oct 27, 2025"
         }
     },
     {
         "visitor": {
             "team": "Atlanta Hawks",
-            "score": "123"
+            "score": "123",
+            "date": "Mon, Oct 27, 2025"
         },
         "home": {
             "team": "Chicago Bulls",
-            "score": "128"
+            "score": "128",
+            "date": "Mon, Oct 27, 2025"
         }
     },
     {
         "visitor": {
             "team": "Brooklyn Nets",
-            "score": "109"
+            "score": "109",
+            "date": "Mon, Oct 27, 2025"
         },
         "home": {
             "team": "Houston Rockets",
-            "score": "137"
+            "score": "137",
+            "date": "Mon, Oct 27, 2025"
         }
     },
     {
         "visitor": {
             "team": "Boston Celtics",
-            "score": "122"
+            "score": "122",
+            "date": "Mon, Oct 27, 2025"
         },
         "home": {
             "team": "New Orleans Pelicans",
-            "score": "90"
+            "score": "90",
+            "date": "Mon, Oct 27, 2025"
         }
     },
     {
         "visitor": {
             "team": "Toronto Raptors",
-            "score": "103"
+            "score": "103",
+            "date": "Mon, Oct 27, 2025"
         },
         "home": {
             "team": "San Antonio Spurs",
-            "score": "121"
+            "score": "121",
+            "date": "Mon, Oct 27, 2025"
         }
     },
     {
         "visitor": {
             "team": "Oklahoma City Thunder",
-            "score": "101"
+            "score": "101",
+            "date": "Mon, Oct 27, 2025"
         },
         "home": {
             "team": "Dallas Mavericks",
-            "score": "94"
+            "score": "94",
+            "date": "Mon, Oct 27, 2025"
         }
     },
     {
         "visitor": {
             "team": "Phoenix Suns",
-            "score": "134"
+            "score": "134",
+            "date": "Mon, Oct 27, 2025"
         },
         "home": {
             "team": "Utah Jazz",
-            "score": "138"
+            "score": "138",
+            "date": "Mon, Oct 27, 2025"
         }
     },
     {
         "visitor": {
             "team": "Denver Nuggets",
-            "score": "127"
+            "score": "127",
+            "date": "Mon, Oct 27, 2025"
         },
         "home": {
             "team": "Minnesota Timberwolves",
-            "score": "114"
+            "score": "114",
+            "date": "Mon, Oct 27, 2025"
         }
     },
     {
         "visitor": {
             "team": "Memphis Grizzlies",
-            "score": "118"
+            "score": "118",
+            "date": "Mon, Oct 27, 2025"
         },
         "home": {
             "team": "Golden State Warriors",
-            "score": "131"
+            "score": "131",
+            "date": "Mon, Oct 27, 2025"
         }
     },
     {
         "visitor": {
             "team": "Portland Trail Blazers",
-            "score": "122"
+            "score": "122",
+            "date": "Mon, Oct 27, 2025"
         },
         "home": {
             "team": "Los Angeles Lakers",
-            "score": "108"
+            "score": "108",
+            "date": "Mon, Oct 27, 2025"
         }
     },
     {
         "visitor": {
             "team": "Philadelphia 76ers",
-            "score": "139"
+            "score": "139",
+            "date": "Tue, Oct 28, 2025"
         },
         "home": {
             "team": "Washington Wizards",
-            "score": "134"
+            "score": "134",
+            "date": "Tue, Oct 28, 2025"
         }
     },
     {
         "visitor": {
             "team": "Charlotte Hornets",
-            "score": "117"
+            "score": "117",
+            "date": "Tue, Oct 28, 2025"
         },
         "home": {
             "team": "Miami Heat",
-            "score": "144"
+            "score": "144",
+            "date": "Tue, Oct 28, 2025"
         }
     },
     {
         "visitor": {
             "team": "New York Knicks",
-            "score": "111"
+            "score": "111",
+            "date": "Tue, Oct 28, 2025"
         },
         "home": {
             "team": "Milwaukee Bucks",
-            "score": "121"
+            "score": "121",
+            "date": "Tue, Oct 28, 2025"
         }
     },
     {
         "visitor": {
             "team": "Sacramento Kings",
-            "score": "101"
+            "score": "101",
+            "date": "Tue, Oct 28, 2025"
         },
         "home": {
             "team": "Oklahoma City Thunder",
-            "score": "107"
+            "score": "107",
+            "date": "Tue, Oct 28, 2025"
         }
     },
     {
         "visitor": {
             "team": "Los Angeles Clippers",
-            "score": "79"
+            "score": "79",
+            "date": "Tue, Oct 28, 2025"
         },
         "home": {
             "team": "Golden State Warriors",
-            "score": "98"
+            "score": "98",
+            "date": "Tue, Oct 28, 2025"
         }
     },
     {
         "visitor": {
             "team": "Houston Rockets",
-            "score": "139"
+            "score": "139",
+            "date": "Wed, Oct 29, 2025"
         },
         "home": {
             "team": "Toronto Raptors",
-            "score": "121"
+            "score": "121",
+            "date": "Wed, Oct 29, 2025"
         }
     },
     {
         "visitor": {
             "team": "Cleveland Cavaliers",
-            "score": "105"
+            "score": "105",
+            "date": "Wed, Oct 29, 2025"
         },
         "home": {
             "team": "Boston Celtics",
-            "score": "125"
+            "score": "125",
+            "date": "Wed, Oct 29, 2025"
         }
     },
     {
         "visitor": {
             "team": "Orlando Magic",
-            "score": "116"
+            "score": "116",
+            "date": "Wed, Oct 29, 2025"
         },
         "home": {
             "team": "Detroit Pistons",
-            "score": "135"
+            "score": "135",
+            "date": "Wed, Oct 29, 2025"
         }
     },
     {
         "visitor": {
             "team": "Atlanta Hawks",
-            "score": "117"
+            "score": "117",
+            "date": "Wed, Oct 29, 2025"
         },
         "home": {
             "team": "Brooklyn Nets",
-            "score": "112"
+            "score": "112",
+            "date": "Wed, Oct 29, 2025"
         }
     },
     {
         "visitor": {
             "team": "Sacramento Kings",
-            "score": "113"
+            "score": "113",
+            "date": "Wed, Oct 29, 2025"
         },
         "home": {
             "team": "Chicago Bulls",
-            "score": "126"
+            "score": "126",
+            "date": "Wed, Oct 29, 2025"
         }
     },
     {
         "visitor": {
             "team": "Indiana Pacers",
-            "score": "105"
+            "score": "105",
+            "date": "Wed, Oct 29, 2025"
         },
         "home": {
             "team": "Dallas Mavericks",
-            "score": "107"
+            "score": "107",
+            "date": "Wed, Oct 29, 2025"
         }
     },
     {
         "visitor": {
             "team": "Portland Trail Blazers",
-            "score": "136"
+            "score": "136",
+            "date": "Wed, Oct 29, 2025"
         },
         "home": {
             "team": "Utah Jazz",
-            "score": "134"
+            "score": "134",
+            "date": "Wed, Oct 29, 2025"
         }
     },
     {
         "visitor": {
             "team": "New Orleans Pelicans",
-            "score": "88"
+            "score": "88",
+            "date": "Wed, Oct 29, 2025"
         },
         "home": {
             "team": "Denver Nuggets",
-            "score": "122"
+            "score": "122",
+            "date": "Wed, Oct 29, 2025"
         }
     },
     {
         "visitor": {
             "team": "Los Angeles Lakers",
-            "score": "116"
+            "score": "116",
+            "date": "Wed, Oct 29, 2025"
         },
         "home": {
             "team": "Minnesota Timberwolves",
-            "score": "115"
+            "score": "115",
+            "date": "Wed, Oct 29, 2025"
         }
     },
     {
         "visitor": {
             "team": "Memphis Grizzlies",
-            "score": "114"
+            "score": "114",
+            "date": "Wed, Oct 29, 2025"
         },
         "home": {
             "team": "Phoenix Suns",
-            "score": "113"
+            "score": "113",
+            "date": "Wed, Oct 29, 2025"
         }
     },
     {
         "visitor": {
             "team": "Orlando Magic",
-            "score": "123"
+            "score": "123",
+            "date": "Thu, Oct 30, 2025"
         },
         "home": {
             "team": "Charlotte Hornets",
-            "score": "107"
+            "score": "107",
+            "date": "Thu, Oct 30, 2025"
         }
     },
     {
         "visitor": {
             "team": "Golden State Warriors",
-            "score": "110"
+            "score": "110",
+            "date": "Thu, Oct 30, 2025"
         },
         "home": {
             "team": "Milwaukee Bucks",
-            "score": "120"
+            "score": "120",
+            "date": "Thu, Oct 30, 2025"
         }
     },
     {
         "visitor": {
             "team": "Washington Wizards",
-            "score": "108"
+            "score": "108",
+            "date": "Thu, Oct 30, 2025"
         },
         "home": {
             "team": "Oklahoma City Thunder",
-            "score": "127"
+            "score": "127",
+            "date": "Thu, Oct 30, 2025"
         }
     },
     {
         "visitor": {
             "team": "Miami Heat",
-            "score": "101"
+            "score": "101",
+            "date": "Thu, Oct 30, 2025"
         },
         "home": {
             "team": "San Antonio Spurs",
-            "score": "107"
+            "score": "107",
+            "date": "Thu, Oct 30, 2025"
         }
     },
     {
         "visitor": {
             "team": "Atlanta Hawks",
-            "score": "128"
+            "score": "128",
+            "date": "Fri, Oct 31, 2025"
         },
         "home": {
             "team": "Indiana Pacers",
-            "score": "108"
+            "score": "108",
+            "date": "Fri, Oct 31, 2025"
         }
     },
     {
         "visitor": {
             "team": "Boston Celtics",
-            "score": "109"
+            "score": "109",
+            "date": "Fri, Oct 31, 2025"
         },
         "home": {
             "team": "Philadelphia 76ers",
-            "score": "108"
+            "score": "108",
+            "date": "Fri, Oct 31, 2025"
         }
     },
     {
         "visitor": {
             "team": "Toronto Raptors",
-            "score": "112"
+            "score": "112",
+            "date": "Fri, Oct 31, 2025"
         },
         "home": {
             "team": "Cleveland Cavaliers",
-            "score": "101"
+            "score": "101",
+            "date": "Fri, Oct 31, 2025"
         }
     },
     {
         "visitor": {
             "team": "New York Knicks",
-            "score": "125"
+            "score": "125",
+            "date": "Fri, Oct 31, 2025"
         },
         "home": {
             "team": "Chicago Bulls",
-            "score": "135"
+            "score": "135",
+            "date": "Fri, Oct 31, 2025"
         }
     },
     {
         "visitor": {
             "team": "Los Angeles Lakers",
-            "score": "117"
+            "score": "117",
+            "date": "Fri, Oct 31, 2025"
         },
         "home": {
             "team": "Memphis Grizzlies",
-            "score": "112"
+            "score": "112",
+            "date": "Fri, Oct 31, 2025"
         }
     },
     {
         "visitor": {
             "team": "Utah Jazz",
-            "score": "96"
+            "score": "96",
+            "date": "Fri, Oct 31, 2025"
         },
         "home": {
             "team": "Phoenix Suns",
-            "score": "118"
+            "score": "118",
+            "date": "Fri, Oct 31, 2025"
         }
     },
     {
         "visitor": {
             "team": "Denver Nuggets",
-            "score": "107"
+            "score": "107",
+            "date": "Fri, Oct 31, 2025"
         },
         "home": {
             "team": "Portland Trail Blazers",
-            "score": "109"
+            "score": "109",
+            "date": "Fri, Oct 31, 2025"
         }
     },
     {
         "visitor": {
             "team": "New Orleans Pelicans",
-            "score": "124"
+            "score": "124",
+            "date": "Fri, Oct 31, 2025"
         },
         "home": {
             "team": "Los Angeles Clippers",
-            "score": "126"
+            "score": "126",
+            "date": "Fri, Oct 31, 2025"
         }
     }
 ]

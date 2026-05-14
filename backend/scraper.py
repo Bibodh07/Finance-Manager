@@ -71,9 +71,3 @@ print(getSRS("GSW"))
 
 
 
-
-# # Test both
-# print("=== REGEX METHOD ===")
-# print(getStartingElo_regex())
-
-getSRS()

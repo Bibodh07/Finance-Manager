@@ -279,6 +279,28 @@ def logIn(userName, passWord):
 
 
 
+#___________________________________________________________________________________
+'''
+New and pertinent functions for the actual site
+'''
+
+def getelo():
+
+    with get_connection() as conn:
+        with conn.cursor() as curs:
+            curs.execute(
+                """
+                SELECT * FROM eloRatings
+                """
+            )
+
+            result = curs.fetchall()
+    return result
+        
+          
+
+    
+
 
 
 
@@ -357,7 +379,55 @@ def logInveri():
 
 
 
+#===============================================
+# NEW ROUTE
+#==============================================
 
+@app.route("/current-market-data")
+def currentMarketdata():
+    with get_connection() as conn:
+        with conn.cursor() as curs:
+            curs.execute("""
+                SELECT DISTINCT ON (team_name) team_name, elo_before
+                FROM eloRatings
+                ORDER BY team_name, game_id ASC
+            """)
+            starting = {row[0]: row[1] for row in curs.fetchall()}
+
+            curs.execute("""
+                SELECT DISTINCT ON (team_name) team_name, elo_after
+                FROM eloRatings
+                ORDER BY team_name, game_id DESC
+            """)
+            current = {row[0]: row[1] for row in curs.fetchall()}
+
+            data = [
+                {
+                    "team": team,
+                    "starting_elo": starting[team],
+                    "current_elo": current[team]
+                }
+                for team in current
+            ]
+            
+            return jsonify(data)  
+        
+
+        
+
+@app.route("/elo/<team>")
+def get_elo_history(team):
+    with get_connection() as conn:       
+        with conn.cursor() as curs:
+            curs.execute(
+                "SELECT elo_after, game_id FROM eloRatings WHERE team_name = %s ORDER BY game_id ASC",
+                (team,)
+            )
+            rows = curs.fetchall()
+            data = [{"game_id": row[1], "elo": row[0]} for row in rows]
+            return jsonify(data)
 
 if __name__ == "__main__":
+    
     app.run(debug=True)
+   
