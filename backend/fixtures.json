@@ -1,0 +1,802 @@
+[
+    {
+        "visitor": {
+            "team": "Houston Rockets",
+            "score": "124"
+        },
+        "home": {
+            "team": "Oklahoma City Thunder",
+            "score": "125"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Golden State Warriors",
+            "score": "119"
+        },
+        "home": {
+            "team": "Los Angeles Lakers",
+            "score": "109"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Brooklyn Nets",
+            "score": "117"
+        },
+        "home": {
+            "team": "Charlotte Hornets",
+            "score": "136"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Cleveland Cavaliers",
+            "score": "111"
+        },
+        "home": {
+            "team": "New York Knicks",
+            "score": "119"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Miami Heat",
+            "score": "121"
+        },
+        "home": {
+            "team": "Orlando Magic",
+            "score": "125"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Philadelphia 76ers",
+            "score": "117"
+        },
+        "home": {
+            "team": "Boston Celtics",
+            "score": "116"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Toronto Raptors",
+            "score": "138"
+        },
+        "home": {
+            "team": "Atlanta Hawks",
+            "score": "118"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Detroit Pistons",
+            "score": "111"
+        },
+        "home": {
+            "team": "Chicago Bulls",
+            "score": "115"
+        }
+    },
+    {
+        "visitor": {
+            "team": "New Orleans Pelicans",
+            "score": "122"
+        },
+        "home": {
+            "team": "Memphis Grizzlies",
+            "score": "128"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Washington Wizards",
+            "score": "120"
+        },
+        "home": {
+            "team": "Milwaukee Bucks",
+            "score": "133"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Los Angeles Clippers",
+            "score": "108"
+        },
+        "home": {
+            "team": "Utah Jazz",
+            "score": "129"
+        }
+    },
+    {
+        "visitor": {
+            "team": "San Antonio Spurs",
+            "score": "125"
+        },
+        "home": {
+            "team": "Dallas Mavericks",
+            "score": "92"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Minnesota Timberwolves",
+            "score": "118"
+        },
+        "home": {
+            "team": "Portland Trail Blazers",
+            "score": "114"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Sacramento Kings",
+            "score": "116"
+        },
+        "home": {
+            "team": "Phoenix Suns",
+            "score": "120"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Oklahoma City Thunder",
+            "score": "141"
+        },
+        "home": {
+            "team": "Indiana Pacers",
+            "score": "135"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Denver Nuggets",
+            "score": "131"
+        },
+        "home": {
+            "team": "Golden State Warriors",
+            "score": "137"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Milwaukee Bucks",
+            "score": "122"
+        },
+        "home": {
+            "team": "Toronto Raptors",
+            "score": "116"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Atlanta Hawks",
+            "score": "111"
+        },
+        "home": {
+            "team": "Orlando Magic",
+            "score": "107"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Cleveland Cavaliers",
+            "score": "131"
+        },
+        "home": {
+            "team": "Brooklyn Nets",
+            "score": "124"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Boston Celtics",
+            "score": "95"
+        },
+        "home": {
+            "team": "New York Knicks",
+            "score": "105"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Detroit Pistons",
+            "score": "115"
+        },
+        "home": {
+            "team": "Houston Rockets",
+            "score": "111"
+        }
+    },
+    {
+        "visitor": {
+            "team": "San Antonio Spurs",
+            "score": "120"
+        },
+        "home": {
+            "team": "New Orleans Pelicans",
+            "score": "116"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Miami Heat",
+            "score": "146"
+        },
+        "home": {
+            "team": "Memphis Grizzlies",
+            "score": "114"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Washington Wizards",
+            "score": "117"
+        },
+        "home": {
+            "team": "Dallas Mavericks",
+            "score": "107"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Minnesota Timberwolves",
+            "score": "110"
+        },
+        "home": {
+            "team": "Los Angeles Lakers",
+            "score": "128"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Golden State Warriors",
+            "score": "119"
+        },
+        "home": {
+            "team": "Portland Trail Blazers",
+            "score": "139"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Utah Jazz",
+            "score": "104"
+        },
+        "home": {
+            "team": "Sacramento Kings",
+            "score": "105"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Phoenix Suns",
+            "score": "102"
+        },
+        "home": {
+            "team": "Los Angeles Clippers",
+            "score": "129"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Chicago Bulls",
+            "score": "110"
+        },
+        "home": {
+            "team": "Orlando Magic",
+            "score": "98"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Oklahoma City Thunder",
+            "score": "117"
+        },
+        "home": {
+            "team": "Atlanta Hawks",
+            "score": "100"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Charlotte Hornets",
+            "score": "121"
+        },
+        "home": {
+            "team": "Philadelphia 76ers",
+            "score": "125"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Indiana Pacers",
+            "score": "103"
+        },
+        "home": {
+            "team": "Memphis Grizzlies",
+            "score": "128"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Phoenix Suns",
+            "score": "111"
+        },
+        "home": {
+            "team": "Denver Nuggets",
+            "score": "133"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Brooklyn Nets",
+            "score": "107"
+        },
+        "home": {
+            "team": "San Antonio Spurs",
+            "score": "118"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Boston Celtics",
+            "score": "113"
+        },
+        "home": {
+            "team": "Detroit Pistons",
+            "score": "119"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Charlotte Hornets",
+            "score": "139"
+        },
+        "home": {
+            "team": "Washington Wizards",
+            "score": "113"
+        }
+    },
+    {
+        "visitor": {
+            "team": "New York Knicks",
+            "score": "107"
+        },
+        "home": {
+            "team": "Miami Heat",
+            "score": "115"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Milwaukee Bucks",
+            "score": "113"
+        },
+        "home": {
+            "team": "Cleveland Cavaliers",
+            "score": "118"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Indiana Pacers",
+            "score": "110"
+        },
+        "home": {
+            "team": "Minnesota Timberwolves",
+            "score": "114"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Toronto Raptors",
+            "score": "129"
+        },
+        "home": {
+            "team": "Dallas Mavericks",
+            "score": "139"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Los Angeles Lakers",
+            "score": "127"
+        },
+        "home": {
+            "team": "Sacramento Kings",
+            "score": "120"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Portland Trail Blazers",
+            "score": "107"
+        },
+        "home": {
+            "team": "Los Angeles Clippers",
+            "score": "114"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Cleveland Cavaliers",
+            "score": "116"
+        },
+        "home": {
+            "team": "Detroit Pistons",
+            "score": "95"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Orlando Magic",
+            "score": "124"
+        },
+        "home": {
+            "team": "Philadelphia 76ers",
+            "score": "136"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Atlanta Hawks",
+            "score": "123"
+        },
+        "home": {
+            "team": "Chicago Bulls",
+            "score": "128"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Brooklyn Nets",
+            "score": "109"
+        },
+        "home": {
+            "team": "Houston Rockets",
+            "score": "137"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Boston Celtics",
+            "score": "122"
+        },
+        "home": {
+            "team": "New Orleans Pelicans",
+            "score": "90"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Toronto Raptors",
+            "score": "103"
+        },
+        "home": {
+            "team": "San Antonio Spurs",
+            "score": "121"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Oklahoma City Thunder",
+            "score": "101"
+        },
+        "home": {
+            "team": "Dallas Mavericks",
+            "score": "94"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Phoenix Suns",
+            "score": "134"
+        },
+        "home": {
+            "team": "Utah Jazz",
+            "score": "138"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Denver Nuggets",
+            "score": "127"
+        },
+        "home": {
+            "team": "Minnesota Timberwolves",
+            "score": "114"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Memphis Grizzlies",
+            "score": "118"
+        },
+        "home": {
+            "team": "Golden State Warriors",
+            "score": "131"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Portland Trail Blazers",
+            "score": "122"
+        },
+        "home": {
+            "team": "Los Angeles Lakers",
+            "score": "108"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Philadelphia 76ers",
+            "score": "139"
+        },
+        "home": {
+            "team": "Washington Wizards",
+            "score": "134"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Charlotte Hornets",
+            "score": "117"
+        },
+        "home": {
+            "team": "Miami Heat",
+            "score": "144"
+        }
+    },
+    {
+        "visitor": {
+            "team": "New York Knicks",
+            "score": "111"
+        },
+        "home": {
+            "team": "Milwaukee Bucks",
+            "score": "121"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Sacramento Kings",
+            "score": "101"
+        },
+        "home": {
+            "team": "Oklahoma City Thunder",
+            "score": "107"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Los Angeles Clippers",
+            "score": "79"
+        },
+        "home": {
+            "team": "Golden State Warriors",
+            "score": "98"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Houston Rockets",
+            "score": "139"
+        },
+        "home": {
+            "team": "Toronto Raptors",
+            "score": "121"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Cleveland Cavaliers",
+            "score": "105"
+        },
+        "home": {
+            "team": "Boston Celtics",
+            "score": "125"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Orlando Magic",
+            "score": "116"
+        },
+        "home": {
+            "team": "Detroit Pistons",
+            "score": "135"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Atlanta Hawks",
+            "score": "117"
+        },
+        "home": {
+            "team": "Brooklyn Nets",
+            "score": "112"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Sacramento Kings",
+            "score": "113"
+        },
+        "home": {
+            "team": "Chicago Bulls",
+            "score": "126"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Indiana Pacers",
+            "score": "105"
+        },
+        "home": {
+            "team": "Dallas Mavericks",
+            "score": "107"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Portland Trail Blazers",
+            "score": "136"
+        },
+        "home": {
+            "team": "Utah Jazz",
+            "score": "134"
+        }
+    },
+    {
+        "visitor": {
+            "team": "New Orleans Pelicans",
+            "score": "88"
+        },
+        "home": {
+            "team": "Denver Nuggets",
+            "score": "122"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Los Angeles Lakers",
+            "score": "116"
+        },
+        "home": {
+            "team": "Minnesota Timberwolves",
+            "score": "115"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Memphis Grizzlies",
+            "score": "114"
+        },
+        "home": {
+            "team": "Phoenix Suns",
+            "score": "113"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Orlando Magic",
+            "score": "123"
+        },
+        "home": {
+            "team": "Charlotte Hornets",
+            "score": "107"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Golden State Warriors",
+            "score": "110"
+        },
+        "home": {
+            "team": "Milwaukee Bucks",
+            "score": "120"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Washington Wizards",
+            "score": "108"
+        },
+        "home": {
+            "team": "Oklahoma City Thunder",
+            "score": "127"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Miami Heat",
+            "score": "101"
+        },
+        "home": {
+            "team": "San Antonio Spurs",
+            "score": "107"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Atlanta Hawks",
+            "score": "128"
+        },
+        "home": {
+            "team": "Indiana Pacers",
+            "score": "108"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Boston Celtics",
+            "score": "109"
+        },
+        "home": {
+            "team": "Philadelphia 76ers",
+            "score": "108"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Toronto Raptors",
+            "score": "112"
+        },
+        "home": {
+            "team": "Cleveland Cavaliers",
+            "score": "101"
+        }
+    },
+    {
+        "visitor": {
+            "team": "New York Knicks",
+            "score": "125"
+        },
+        "home": {
+            "team": "Chicago Bulls",
+            "score": "135"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Los Angeles Lakers",
+            "score": "117"
+        },
+        "home": {
+            "team": "Memphis Grizzlies",
+            "score": "112"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Utah Jazz",
+            "score": "96"
+        },
+        "home": {
+            "team": "Phoenix Suns",
+            "score": "118"
+        }
+    },
+    {
+        "visitor": {
+            "team": "Denver Nuggets",
+            "score": "107"
+        },
+        "home": {
+            "team": "Portland Trail Blazers",
+            "score": "109"
+        }
+    },
+    {
+        "visitor": {
+            "team": "New Orleans Pelicans",
+            "score": "124"
+        },
+        "home": {
+            "team": "Los Angeles Clippers",
+            "score": "126"
+        }
+    }
+]

@@ -31,4 +31,14 @@ elo_df["elo"] = 1200 + ((elo_df["raw_score"] - min_score) / (max_score - min_sco
 # sort by elo
 elo_df = elo_df.sort_values("elo", ascending=False).reset_index(drop=True)
 
-print(elo_df[["team", "elo"]])
+# human readable
+with open("elo_ratings.txt", "w") as f:
+    f.write(f"{'Rank':<6}{'Team':<35}{'Elo':<10}\n")
+    f.write("-" * 51 + "\n")
+    for i, row in elo_df.iterrows():
+        f.write(f"{i+1:<6}{row['team']:<35}{row['elo']:.2f}\n")
+
+# for the simulator
+elo_dict = dict(zip(elo_df["team"], elo_df["elo"]))
+with open("elo.json", "w") as f:
+    json.dump(elo_dict, f, indent=4)
