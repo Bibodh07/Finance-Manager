@@ -4,50 +4,13 @@
 
 
 
-
-body{
-
-  background-color: #e7ecef;
-
-}
-.mainBody{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Ubuntu", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 1rem;
-  
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.navBar {
- 
-  position: sticky;
-  top: 0;
-  width: 90vw;
-  padding: 10px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
-  
-
-  /* glass effect */
-  background: rgba(255, 255, 255, 0.5); /* semi-transparent */
-  backdrop-filter: blur(20px);          /* frosted glass blur */
-  -webkit-backdrop-filter: blur(10px);  /* Safari support */
-  border-radius: 12px;
-  border: 1px solid  rgba(255, 255, 255, 0.5); /* subtle outline */
-  
+html, body, #root {
+  height: 100%;
 }
 
-.Header{
-
-  font-family: "Ubuntu", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 3rem;
-
-
-}

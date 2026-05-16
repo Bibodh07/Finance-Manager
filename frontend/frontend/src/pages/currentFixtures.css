@@ -1,85 +1,115 @@
-body{
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap');
 
-    background-color: #e7ecef;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.fixturesWrapper {
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.05);
-  min-height: calc(100vh - 70px); /* leave room for navbar */
-  color: white;
-  font-family: Arial, sans-serif;
-  
-  
+html, body, #root {
+  height: 100%;
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  overflow-x: hidden;
 }
 
-h2 {
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.fixturesGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.fixtureCard {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px); /* glassy effect */
-  border-radius: 15px;
-  padding: 15px;
-  text-align: center;
-  transition: 0.3s;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.fixtureCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-.teams {
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-.date {
-  font-size: 0.9rem;
-  margin: 5px 0;
-  color: #ddd;
-}
-
-.status {
-  font-size: 0.8rem;
-  color: #aaa;
-}
-
-.loading {
-  text-align: center;
-  margin-top: 50px;
-  font-size: 1.2rem;
+.mainBody {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 
-.teamsRow{
 
-   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px); /* glassy effect */
-  border-radius: 15px;
-  padding: 15px;
-  text-align: center;
-  transition: 0.3s;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+.tableWrapper {
+  width: 30%;
+  height: 40vh;
+  font-family: 'Ubuntu Mono', monospace;
+  padding: 24px;
+  margin-top: 80px;
+
 
 }
 
+.team-elo-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  color: #00ff41;
+  background-color: #0d0d0d;
+  border: 1px solid #00ff41;
+}
 
-.teamLogo {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;  /* keeps aspect ratio */
-  display: block;
-  margin: 0 auto 5px auto;
+.team-elo-table thead {
+  background-color: #003300;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+}
+
+.team-elo-table th {
+  padding: 10px 16px;
+  border-bottom: 1px solid #00ff41;
+  border-right: 1px solid #1a1a1a;
+  text-align: left;
+  color: #00ff41;
+}
+
+.team-elo-table td {
+  padding: 8px 16px;
+  border-bottom: 1px solid #1a1a1a;
+  border-right: 1px solid #1a1a1a;
+}
+
+.team-elo-table tbody tr:hover {
+  background-color: #001a00;
+  cursor: default;
+}
+
+.positive {
+  color: #00ff41;
+}
+
+.negative {
+  color: #ff4444;
+}
+
+.row-green {
+  border-left: 3px solid #00ff41;
+}
+
+.row-yellow {
+  border-left: 3px solid #ffd700;
+}
+
+.row-red {
+  border-left: 3px solid #ff4444;
+}
+
+
+.graphWrapper {
+  min-height: 30vh;
+  min-width: 45vw;
+  position: absolute;
+  left: 2%;
+  top: 10%;
+  background-color: #0d0d0d;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 16px;
+  font-family: 'Ubuntu Mono', monospace;
+  margin-top: 5%;
+  margin-left: 5%;
+}
+
+.chartTitle {
+  color: #00b4d8;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
 }

@@ -1,27 +1,32 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
-
-
-
-.navbar {
+.navBar {
+  position: sticky;
+  top: 16px;
+  width: 90vw;
+  margin: 0 auto;
+  padding: 10px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-
 .navLinks {
-
   display: flex;
-  gap: 30px;          /* space between items */
-  margin-left: auto;   /* pushes these items to the right */
+  gap: 30px;
+  margin-left: auto;
   list-style: none;
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 1rem;
+  color: white;
 }
 
 .navLinks li {
@@ -31,18 +36,17 @@
 }
 
 .navLinks li:hover {
-  background: rgba(255, 255, 255, 0.1); /* glassy hover effect */
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
 }
 
 .navLinks li.active {
   padding: 7px;
-  background: black; /* highlighted for active page */
+  background: black;
   color: white;
   border-radius: 8px;
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 1rem;
-
 }

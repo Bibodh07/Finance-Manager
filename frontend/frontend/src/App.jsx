@@ -1,44 +1,18 @@
 import React, { useState } from "react";
 import NavBar from "./components/navBar";
 import CurrentFixtures from "./pages/currentFixtures";
-import Home from "./pages/home";
-import Investments from "./pages/investments";
-import Login from  "./pages/login";
 
 function App() {
+  const [page, setPage] = useState("fixtures");
 
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [page, setPage] = useState("home"); // track current page
-
-  
+  const background = page === "fixtures" 
+    ? "black" 
+    : "linear-gradient(135deg, #1a1a2e, #16213e, #0f3460)";
 
   return (
-    <div>
-
-    
-
-
-      {loggedIn ? (
-
-        <div>
-    
-      
+    <div style={{ minHeight: "100vh", background }}>
       <NavBar page={page} setPage={setPage} />
-
-      {page === "home" && <Home />}
       {page === "fixtures" && <CurrentFixtures />}
-      {page === "investment" && <Investments />}
-
-      </div>
-
-      ) : (
-
-        <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-
-      )}
-
-  
-
     </div>
   );
 }
