@@ -8,6 +8,7 @@ from flask_cors import CORS
 import psycopg2
 import os
 from datetime import datetime
+import time
 
 
 
@@ -25,11 +26,7 @@ conn = psycopg2.connect(
 cursor = conn.cursor()
 
 
-
-
-
-def getFixtures():
-
+def getFixtures(month):
 
     NBA_TEAMS = {
         "ATL": "Atlanta Hawks",
@@ -67,14 +64,28 @@ def getFixtures():
     NAME_TO_ABB = {v: k for k, v in NBA_TEAMS.items()}
 
 
-    url = "https://www.basketball-reference.com/leagues/NBA_2026_games-october.html"
-    headers = {
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/136.0.0.0 Safari/537.36"
-        )
+
+
+
+
+    cutoff = datetime.strptime("Apr 12, 2026", "%b %d, %Y")
+    
+    months_to_num = {
+        'october': 10, 'november': 11, 'december': 12,
+        'january': 1, 'february': 2, 'march': 3, 'april': 4
     }
+
+    # skip if already in DB
+    cursor.execute(
+        "SELECT COUNT(*) FROM fixtures WHERE EXTRACT(MONTH FROM game_date) = %s",
+        (months_to_num[month],)
+    )
+    if cursor.fetchone()[0] > 0:
+        print(f"Skipping {month}, already in DB")
+        return []
+
+    url = f"https://www.basketball-reference.com/leagues/NBA_2026_games-{month}.html"
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"}
 
     req = httpx.get(url, headers=headers)
     soup = BeautifulSoup(req.text, 'lxml')
@@ -86,27 +97,22 @@ def getFixtures():
             home_pts = line.find_all("td", attrs={"data-stat": "home_pts"})
             visitorTeamname = line.find_all("td", attrs={"data-stat": "visitor_team_name"})
             homeTeamname = line.find_all("td", attrs={"data-stat": "home_team_name"})
-            matchDate = line.find_all("th" , attrs={"data-stat" : "date_game"})
+            matchDate = line.find_all("th", attrs={"data-stat": "date_game"})
 
     games = []
     for i in range(len(visitor_pts)):
+        date_str = matchDate[i].text
+        game_date = datetime.strptime(date_str, "%a, %b %d, %Y")
+
+        if game_date > cutoff:
+            continue
+
         game = {
-            "visitor": {
-                "team": visitorTeamname[i].text,
-                "score": visitor_pts[i].text,
-                "date" : matchDate[i].text
-            },
-            "home": {
-                "team": homeTeamname[i].text,
-                "score": home_pts[i].text,
-                "date" : matchDate[i].text
-            }
+            "visitor": {"team": visitorTeamname[i].text, "score": visitor_pts[i].text, "date": matchDate[i].text},
+            "home": {"team": homeTeamname[i].text, "score": home_pts[i].text, "date": matchDate[i].text}
         }
         games.append(game)
 
-    with open("fixtures.json", "w") as f:
-        json.dump(games, f, indent=4)
-    
     for game in games:
         if not game["home"]["score"] or not game["visitor"]["score"]:
             continue
@@ -115,44 +121,37 @@ def getFixtures():
         formatted_date = datetime.strptime(date_str, "%a, %b %d, %Y").strftime("%Y-%m-%d")
 
         cursor.execute(
-            '''
-        INSERT INTO fixtures (home_team, visitor_team, home_score, visitor_score, winner, game_date)
-        VALUES (%s, %s, %s, %s, %s, %s)
-        RETURNING game_id
-            ''',
+            '''INSERT INTO fixtures (home_team, visitor_team, home_score, visitor_score, winner, game_date)
+               VALUES (%s, %s, %s, %s, %s, %s) RETURNING game_id''',
             (
-            game["home"]["team"],
-            game["visitor"]["team"],
-            int(game["home"]["score"]),
-            int(game["visitor"]["score"]),
-            game["home"]["team"] if int(game["home"]["score"]) > int(game["visitor"]["score"]) else game["visitor"]["team"],
-            formatted_date
-
-
+                game["home"]["team"], game["visitor"]["team"],
+                int(game["home"]["score"]), int(game["visitor"]["score"]),
+                game["home"]["team"] if int(game["home"]["score"]) > int(game["visitor"]["score"]) else game["visitor"]["team"],
+                formatted_date
             )
         )
         game_id = cursor.fetchone()[0]
 
         eloRatings = updateEloRatings(
             NAME_TO_ABB[game["visitor"]["team"]],
-            NAME_TO_ABB[game["home"]["team"]], 
+            NAME_TO_ABB[game["home"]["team"]],
             NAME_TO_ABB[game["home"]["team"] if int(game["home"]["score"]) > int(game["visitor"]["score"]) else game["visitor"]["team"]]
         )
 
         for team, values in eloRatings.items():
-
             cursor.execute(
-                """
-                INSERT INTO eloRatings (team_name, elo_before, elo_after, game_id)
-                VALUES (%s, %s, %s, %s)
-                """,
-               (team, values["elo_before"], values["elo_after"], game_id)
-
+                "INSERT INTO eloRatings (team_name, elo_before, elo_after, game_id) VALUES (%s, %s, %s, %s)",
+                (team, values["elo_before"], values["elo_after"], game_id)
             )
 
-
     conn.commit()
-    print(f"Saved {len(games)} games to fixtures.json")
+    print(f"Saved {len(games)} games from {month}")
+    return games  # return instead of writing JSON
+
+
+
+
+
 
 
 def simulate():
@@ -250,20 +249,90 @@ def updateEloRatings(team1, team2, winner, K=20):
     }
     
         
-    
-        
-    
 
+def resetAndReload():
 
-       
+    NBA_TEAMS = {
+    "ATL": "Atlanta Hawks",
+    "BOS": "Boston Celtics",
+    "BRK": "Brooklyn Nets",
+    "CHO": "Charlotte Hornets",
+    "CHI": "Chicago Bulls",
+    "CLE": "Cleveland Cavaliers",
+    "DAL": "Dallas Mavericks",
+    "DEN": "Denver Nuggets",
+    "DET": "Detroit Pistons",
+    "GSW": "Golden State Warriors",
+    "HOU": "Houston Rockets",
+    "IND": "Indiana Pacers",
+    "LAC": "Los Angeles Clippers",
+    "LAL": "Los Angeles Lakers",
+    "MEM": "Memphis Grizzlies",
+    "MIA": "Miami Heat",
+    "MIL": "Milwaukee Bucks",
+    "MIN": "Minnesota Timberwolves",
+    "NOP": "New Orleans Pelicans",
+    "NYK": "New York Knicks",
+    "OKC": "Oklahoma City Thunder",
+    "ORL": "Orlando Magic",
+    "PHI": "Philadelphia 76ers",
+    "PHO": "Phoenix Suns",
+    "POR": "Portland Trail Blazers",
+    "SAC": "Sacramento Kings",
+    "SAS": "San Antonio Spurs",
+    "TOR": "Toronto Raptors",
+    "UTA": "Utah Jazz",
+    "WAS": "Washington Wizards"
+}
 
-def main():
+    NAME_TO_ABB = {v: k for k, v in NBA_TEAMS.items()}
 
-    if Path("fixtures.json").exists():
-        simulate()
-    else:
-        getFixtures()
+    NBA_TEAMS_LIST = list(NBA_TEAMS.keys())
+    # clear everything
+    cursor.execute("TRUNCATE TABLE eloratings")
+    cursor.execute("TRUNCATE TABLE fixtures CASCADE")
+    conn.commit()
+    print("Cleared DB")
 
-getFixtures()
+    # reset elo.json back to 1500
+    elo_dict = {team: 1500 for team in NBA_TEAMS}
+    with open("elo.json", "w") as f:
+        json.dump(elo_dict, f, indent=4)
+    print("Reset Elo")
 
+    # rescrape all months
+    months = ['october', 'november', 'december', 'january', 'february', 'march', 'april']
+    failed = []
 
+    for month in months:
+        try:
+            getFixtures(month)
+        except Exception as e:
+            print(f"Failed on {month}: {e}")
+            failed.append(month)
+
+    while failed:
+        for month in failed.copy():
+            try:
+                print(f"Retrying {month}...")
+                time.sleep(20)
+                getFixtures(month)
+                failed.remove(month)
+            except Exception as e:
+                print(f"Still failed on {month}: {e}")
+
+def checkGames():
+    cursor.execute("""
+        SELECT EXTRACT(MONTH FROM game_date) as month, COUNT(*) 
+        FROM fixtures 
+        GROUP BY month 
+        ORDER BY month
+    """)
+    rows = cursor.fetchall()
+    total = 0
+    for row in rows:
+        print(f"Month {int(row[0])}: {row[1]} games")
+        total += row[1]
+    print(f"Total: {total}")
+
+checkGames()
