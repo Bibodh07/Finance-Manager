@@ -53,37 +53,10 @@ function CurrentFixtures() {
 
   return (
     <main className="mainBody">
-      <GetTeamEloData setData={setData} />
-      <div className="tableWrapper">
-      <table className="team-elo-table">
-      <thead>
-        <tr>
-          <th>Team</th>
-          <th>Starting Elo</th>
-          <th>Current Elo</th>
-          <th>PI</th>
-        </tr>
-       </thead>
-       <tbody>
-          {data.map((team) => {
-              const diff = (team.current_elo - team.starting_elo).toFixed(1);
-              const isPositive = diff >= 0;
-              return (
-                  <tr key={team.team} className={getRowClass(team.current_elo)}>
-                    <td>{team.team}</td>
-                    <td>{team.starting_elo.toFixed(1)}</td>
-                    <td>{team.current_elo.toFixed(1)}</td>
-                    <td className={isPositive ? "positive" : "negative"}>
-                        {isPositive ? "+" : ""}{diff}
-                    </td>
-                  </tr>
-    );
-  })}
-          </tbody>
-      </table>
-      </div>
+
 
       <GetGraphData setgraphData={setgraphData} team={selectedTeam} />
+      <GetTeamEloData setData={setData} />
       
       <div className="graphWrapper">
         <p className="chartTitle">{selectedTeam} — Elo History</p>
@@ -116,8 +89,51 @@ function CurrentFixtures() {
   dot={{ fill: '#f97316', r: 3 }}
   activeDot={{ fill: '#ffffff', r: 5 }}
 />
+
+<Line
+  type="monotone"
+  dataKey="predicted"
+  stroke="#7c8cf8"
+  strokeWidth={2}
+  dot={false}
+  strokeDasharray="5 5"
+  name="Predicted ELO"
+/>
+
+
               </LineChart>
         </ResponsiveContainer>
+      </div>
+
+
+   
+      <div className="tableWrapper" style={{ marginLeft: 'auto' }}>
+      <table className="team-elo-table">
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Starting Elo</th>
+          <th>Current Elo</th>
+          <th>PI</th>
+        </tr>
+       </thead>
+       <tbody>
+          {data.map((team) => {
+              const diff = (team.current_elo - team.starting_elo).toFixed(1);
+              const isPositive = diff >= 0;
+              return (
+                  <tr key={team.team} className={getRowClass(team.current_elo)}>
+                    <td>{team.team}</td>
+                    <td>{team.starting_elo.toFixed(1)}</td>
+                    <td>{team.current_elo.toFixed(1)}</td>
+                    <td className={isPositive ? "positive" : "negative"}>
+                        {isPositive ? "+" : ""}{diff}
+                    </td>
+                  </tr>
+    );
+  })}
+          </tbody>
+      </table>
       </div>
 
     </main>

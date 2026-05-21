@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import NavBar from "./components/navBar";
 import CurrentFixtures from "./pages/currentFixtures";
+import Investment from "./pages/investment";
 
 function App() {
   const [page, setPage] = useState("fixtures");
@@ -13,6 +14,7 @@ function App() {
     <div style={{ minHeight: "100vh", background }}>
       <NavBar page={page} setPage={setPage} />
       {page === "fixtures" && <CurrentFixtures />}
+      {page === "investment" && <Investment />}
     </div>
   );
 }

@@ -9,7 +9,7 @@ import psycopg2
 import os
 from datetime import datetime
 import time
-
+from predictor import predict
 
 
 load_dotenv(find_dotenv())
@@ -117,6 +117,10 @@ def getFixtures(month):
         if not game["home"]["score"] or not game["visitor"]["score"]:
             continue
 
+
+        pred_winner, prob = predict( NAME_TO_ABB[game["visitor"]["team"]], NAME_TO_ABB[game["home"]["team"]])
+        predictedEloRatings = updateEloRatings(team1=NAME_TO_ABB[game["visitor"]["team"]], team2=NAME_TO_ABB[game["home"]["team"]], winner=pred_winner, fileName="predicted.json")
+
         date_str = game["home"]["date"]
         formatted_date = datetime.strptime(date_str, "%a, %b %d, %Y").strftime("%Y-%m-%d")
 
@@ -127,7 +131,8 @@ def getFixtures(month):
                 game["home"]["team"], game["visitor"]["team"],
                 int(game["home"]["score"]), int(game["visitor"]["score"]),
                 game["home"]["team"] if int(game["home"]["score"]) > int(game["visitor"]["score"]) else game["visitor"]["team"],
-                formatted_date
+                formatted_date,
+                
             )
         )
         game_id = cursor.fetchone()[0]
@@ -140,8 +145,8 @@ def getFixtures(month):
 
         for team, values in eloRatings.items():
             cursor.execute(
-                "INSERT INTO eloRatings (team_name, elo_before, elo_after, game_id) VALUES (%s, %s, %s, %s)",
-                (team, values["elo_before"], values["elo_after"], game_id)
+                "INSERT INTO eloRatings (team_name, elo_before, elo_after, predicted_elo, game_id) VALUES (%s, %s, %s, %s, %s)",
+                (team, values["elo_before"], values["elo_after"], predictedEloRatings[team]["elo_after"], game_id)
             )
 
     conn.commit()
@@ -220,7 +225,7 @@ def simulate():
                 continue
 
 
-def updateEloRatings(team1, team2, winner, K=20):
+def updateEloRatings(team1, team2, winner, K=20, fileName="elo.json"):
 
     with open("elo.json") as f:
         elo_dict = json.load(f)
@@ -240,7 +245,7 @@ def updateEloRatings(team1, team2, winner, K=20):
     elo_dict[team1] = new_R1
     elo_dict[team2] = new_R2
 
-    with open("elo.json", "w") as f:
+    with open(f"{fileName}", "w") as f:
         json.dump(elo_dict, f, indent=4)
     
     return {
@@ -308,6 +313,7 @@ def resetAndReload():
         try:
             getFixtures(month)
         except Exception as e:
+            conn.rollback()
             print(f"Failed on {month}: {e}")
             failed.append(month)
 
@@ -319,7 +325,9 @@ def resetAndReload():
                 getFixtures(month)
                 failed.remove(month)
             except Exception as e:
-                print(f"Still failed on {month}: {e}")
+                    conn.rollback()
+                    print(f"Failed on {month}: {e}")
+                   
 
 def checkGames():
     cursor.execute("""
@@ -335,4 +343,6 @@ def checkGames():
         total += row[1]
     print(f"Total: {total}")
 
-checkGames()
+
+resetAndReload()
+

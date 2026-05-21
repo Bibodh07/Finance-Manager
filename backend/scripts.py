@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import psycopg2
+from psycopg2 import pool
 import os
 import time
 import random
@@ -8,6 +8,8 @@ from dotenv import load_dotenv, find_dotenv
 import requests
 import csv
 import json
+from graph import *
+
 
 
 
@@ -51,14 +53,22 @@ app.config["dbport"] = int(os.getenv("dbport"))
 # DATABASE CONNECTION
 # ==============================
 
+connection_pool = pool.SimpleConnectionPool(
+    1,   # min connections
+    10,  # max connections
+    dbname=os.getenv("data_base"),
+    user=os.getenv("dbuser"),
+    password=os.getenv("dbpassword"),
+    host=os.getenv("dbhost"),
+    port=int(os.getenv("dbport"))
+)
+
 def get_connection():
-    return psycopg2.connect(
-        dbname=app.config["data_base"],
-        user=app.config["dbuser"],
-        password=app.config["dbpassword"],
-        host=app.config["dbhost"],
-        port=app.config["dbport"]
-    )
+    return connection_pool.getconn()
+
+def release_connection(conn):
+    connection_pool.putconn(conn)
+
 
 
 # ==============================
@@ -71,7 +81,6 @@ def createAuniqueKey():
     return t % rand_int
 
 
-# ⚠️ temporary hashing (upgrade later)
 def hashPassword(pw):
     hash_value = 0
     for c in pw:
@@ -385,7 +394,8 @@ def logInveri():
 
 @app.route("/current-market-data")
 def currentMarketdata():
-    with get_connection() as conn:
+    conn = get_connection()
+    try:
         with conn.cursor() as curs:
             curs.execute("""
                 SELECT DISTINCT ON (team_name) team_name, elo_before
@@ -409,25 +419,50 @@ def currentMarketdata():
                 }
                 for team in current
             ]
-            
-            return jsonify(data)  
-        
+            return jsonify(data)
+    finally:
+        release_connection(conn)
 
-        
 
 @app.route("/elo/<team>")
 def get_elo_history(team):
-    with get_connection() as conn:       
+    conn = get_connection()
+    try:
         with conn.cursor() as curs:
             curs.execute(
-                "SELECT elo_after, game_id FROM eloRatings WHERE team_name = %s ORDER BY game_id ASC",
+                "SELECT predicted_elo, elo_after, game_id FROM eloRatings WHERE team_name = %s ORDER BY game_id ASC",
                 (team,)
             )
-            rows = curs.fetchall()
-            data = [{"game_id": row[1], "elo": row[0]} for row in rows]
+            rows = curs.fetchall()  
+            data = [{"game_id": row[2], "elo": row[1], "predicted": row[0]} for row in rows]
             return jsonify(data)
+    finally:
+        release_connection(conn)
+
+
+@app.route("/elo-trend-line")
+def eloTrendLine():  
+    conn = get_connection()
+    try:
+        with conn.cursor() as curs:
+            curs.execute("""
+                SELECT DISTINCT ON (team_name) team_name, elo_after
+                FROM eloRatings
+                ORDER BY team_name, game_id DESC
+            """)
+            actual_ratings = {row[0]: row[1] for row in curs.fetchall()}  # inside cursor block now
+            predicted_ratings = getTrendLineData() 
+            return jsonify({
+                "actual": actual_ratings,
+                "predicted": predicted_ratings
+            })
+    finally:
+        release_connection(conn)
+
+
+
 
 if __name__ == "__main__":
-    
+
     app.run(debug=True)
    

@@ -9,6 +9,9 @@ from scipy.stats import zscore, norm
 
 
 
+
+
+
 def getDataInJson():
 
     load_dotenv(find_dotenv())
@@ -90,7 +93,7 @@ def predict(team1, team2):
     winner = team1 if prob > 0.5 else team2
     
     print(f"{team1} vs {team2} → {winner} wins with {prob:.0%} confidence")
-    print(winner, prob)
+  
     return winner, prob
 
 
