@@ -48,8 +48,16 @@ const chartData = Object.entries(actData).map(([team, actual]) => ({
         <main>
             <div className="scatterChart">
                 <ResponsiveContainer width="100%" height={400}>
-    <ComposedChart data={chartData} margin={{ top: 20, right: 30, bottom: 20, left: 30 }}>
-        <XAxis dataKey="team" type="category" name="Team" tick={{ fill: "#8892a4" }} />
+    <ComposedChart data={chartData} margin={{ top: 20, right: 20, bottom: 60, left: 10 }}>
+        <XAxis
+  dataKey="team"
+  type="category"
+  name="Team"
+  tick={{ fill: "#8892a4", fontSize: 11 }}
+  angle={-45}
+  textAnchor="end"
+  height={60}
+/>
         <YAxis domain={["auto", "auto"]} tick={{ fill: "#8892a4" }} />
         <Tooltip
             contentStyle={{

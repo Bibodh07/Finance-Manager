@@ -1,9 +1,9 @@
 /* investment.css */
 
 main {
-    max-width: 1000px;
+    width: 100%;
     margin: 0;
-    padding: 2rem 3rem;
+    padding: 2rem clamp(1rem, 4vw, 3rem);
     font-family: 'Inter', sans-serif;
 }
 
@@ -25,4 +25,16 @@ main {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 1.5rem;
+    width: 100%;
+    overflow: hidden;
+}
+
+.scatterChart {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: clamp(0.75rem, 3vw, 1.5rem); /* shrinks on mobile */
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
 }
