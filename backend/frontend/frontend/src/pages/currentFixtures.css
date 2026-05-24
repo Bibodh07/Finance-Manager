@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  overflow-x: hidden;
+}
+
+.mainBody {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 100px 2% 2% 2%;
+  gap: 2%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  flex-wrap: wrap;
+}
+
+
+
+.tableWrapper {
+  position: relative;
+  right: 0px;
+  top: 1%;
+  width: 28%;
+  min-width: 0;
+  min-width: 280px;
+  font-family: 'Ubuntu Mono', monospace;
+  padding: 0;
+  flex-shrink: 0;
+  flex: 1 1 280px;
+}
+.team-elo-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  color: #00ff41;
+  background-color: #0d0d0d;
+  border: 1px solid #00ff41;
+  font-size: clamp(0.65rem, 1.5vw, 0.85rem);
+
+}
+
+.team-elo-table thead {
+  background-color: #003300;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+}
+
+.team-elo-table th {
+  padding: 10px 16px;
+  border-bottom: 1px solid #00ff41;
+  border-right: 1px solid #1a1a1a;
+  text-align: left;
+  color: #00ff41;
+}
+
+.team-elo-table td {
+  padding: 8px 16px;
+  border-bottom: 1px solid #1a1a1a;
+  border-right: 1px solid #1a1a1a;
+}
+
+.team-elo-table tbody tr:hover {
+  background-color: #001a00;
+  cursor: default;
+}
+
+.positive {
+  color: #00ff41;
+}
+
+.negative {
+  color: #ff4444;
+}
+
+.row-green {
+  border-left: 3px solid #00ff41;
+}
+
+.row-yellow {
+  border-left: 3px solid #ffd700;
+}
+
+.row-red {
+  border-left: 3px solid #ff4444;
+}
+
+
+.graphWrapper {
+  width: 65%;
+  background-color: #0d0d0d;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 16px;
+  font-family: 'Ubuntu Mono', monospace;
+  position: relative;
+  flex-shrink: 0;
+  flex: 1 1 500px;
+
+}
+
+
+.chartTitle {
+  color: #00b4d8;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}

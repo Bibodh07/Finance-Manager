@@ -112,15 +112,9 @@ def getStartingElo(teamName: str):
     uncommented = re.sub(r'<!--(.*?)-->', r'\1', req.text, flags=re.DOTALL)
     html = BeautifulSoup(uncommented, "lxml")
 
+    # advanced table
     advanced_table = html.find("table", id="advanced")
 
-<<<<<<< HEAD
-    stats = {
-        "team": teamName,
-        "ws":      advanced_table.find_all("td", {"data-stat": "ws"})[-1].get_text(),
-        "ws_per48": advanced_table.find_all("td", {"data-stat": "ws_per_48"})[-1].get_text(),
-        "bpm":     advanced_table.find_all("td", {"data-stat": "bpm"})[-1].get_text(),
-=======
     # SRS from meta div
     srs_tag = html.find("a", href="/about/glossary.html#srs")
     srs_value = srs_tag.parent.parent.get_text().split(":")[1].strip().split()[0]
@@ -140,13 +134,11 @@ def getStartingElo(teamName: str):
         "ortg":      float(team_misc.find("td", attrs={"data-stat":"off_rtg"}).get_text() or 0),
         "drtg":      float(team_misc.find("td", attrs={"data-stat":"def_rtg"}).get_text() or 0)
 
->>>>>>> 68197ee (Made some data scraping for player data)
     }
 
     print(stats)
 
     return stats
-
 
 def retryFailed(failed: list, results: list) -> list:
     for team in failed:

@@ -288,6 +288,28 @@ def logIn(userName, passWord):
 
 
 
+#___________________________________________________________________________________
+'''
+New and pertinent functions for the actual site
+'''
+
+def getelo():
+
+    with get_connection() as conn:
+        with conn.cursor() as curs:
+            curs.execute(
+                """
+                SELECT * FROM eloRatings
+                """
+            )
+
+            result = curs.fetchall()
+    return result
+        
+          
+
+    
+
 
 
 
@@ -366,11 +388,10 @@ def logInveri():
 
 
 
+#===============================================
+# NEW ROUTE
+#==============================================
 
-<<<<<<< HEAD
-
-if __name__ == "__main__":
-=======
 @app.route("/current-market-data")
 def currentMarketdata():
     conn = get_connection()
@@ -443,5 +464,5 @@ def eloTrendLine():
 
 if __name__ == "__main__":
 
->>>>>>> 68197ee (Made some data scraping for player data)
     app.run(debug=True)
+   
