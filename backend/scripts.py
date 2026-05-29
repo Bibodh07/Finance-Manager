@@ -8,6 +8,9 @@ from dotenv import load_dotenv, find_dotenv
 import requests
 import csv
 import json
+from scipy.stats import linregress
+import numpy as np
+from psycopg2 import pool
 
 
 
@@ -46,6 +49,16 @@ app.config["dbpassword"] = os.getenv("dbpassword")
 app.config["dbhost"] = os.getenv("dbhost")
 app.config["dbport"] = int(os.getenv("dbport"))
 
+connection_pool = pool.SimpleConnectionPool(
+    minconn=1,
+    maxconn=10,
+    dbname=app.config["data_base"],
+    user=app.config["dbuser"],
+    password=app.config["dbpassword"],
+    host=app.config["dbhost"],
+    port=app.config["dbport"]
+)
+
 
 # ==============================
 # DATABASE CONNECTION
@@ -59,6 +72,9 @@ def get_connection():
         host=app.config["dbhost"],
         port=app.config["dbport"]
     )
+
+def release_connection(conn):
+    connection_pool.putconn(conn)
 
 
 # ==============================
@@ -278,6 +294,39 @@ def logIn(userName, passWord):
 
 
 
+def getTrendLineData():
+    conn = get_connection()
+    try:
+        with conn.cursor() as curs:
+            curs.execute("""
+                SELECT team_name, elo_after, game_id 
+                FROM eloratings 
+                ORDER BY team_name, game_id ASC
+            """)
+            rows = curs.fetchall()
+    finally:
+        conn.close()
+
+    teams = {}
+    for row in rows:
+        team, elo, game_id = row
+        if team not in teams:
+            teams[team] = []
+        teams[team].append((game_id, elo))
+
+    predictions = {}
+    for team, history in teams.items():
+        x = np.array([h[0] for h in history])
+        y = np.array([h[1] for h in history])
+        slope, intercept, _, _, _ = linregress(x, y)
+        next_game = x[-1] + 1
+        predictions[team] = round(intercept + slope * next_game, 2)
+
+    return predictions
+
+
+
+
 
 
 
@@ -353,6 +402,79 @@ def logInveri():
     return jsonify({
         "successStatus":frResult
     }),200
+
+
+
+
+
+@app.route("/current-market-data")
+def currentMarketdata():
+    conn = get_connection()
+    try:
+        with conn.cursor() as curs:
+            curs.execute("""
+                SELECT DISTINCT ON (team_name) team_name, elo_before
+                FROM eloRatings
+                ORDER BY team_name, game_id ASC
+            """)
+            starting = {row[0]: row[1] for row in curs.fetchall()}
+
+            curs.execute("""
+                SELECT DISTINCT ON (team_name) team_name, elo_after
+                FROM eloRatings
+                ORDER BY team_name, game_id DESC
+            """)
+            current = {row[0]: row[1] for row in curs.fetchall()}
+
+            data = [
+                {
+                    "team": team,
+                    "starting_elo": starting[team],
+                    "current_elo": current[team]
+                }
+                for team in current
+            ]
+            return jsonify(data)
+    finally:
+        release_connection(conn)
+
+
+@app.route("/elo/<team>")
+def get_elo_history(team):
+    conn = get_connection()
+    try:
+        with conn.cursor() as curs:
+            curs.execute(
+                "SELECT predicted_elo, elo_after, game_id FROM eloRatings WHERE team_name = %s ORDER BY game_id ASC",
+                (team,)
+            )
+            rows = curs.fetchall()  
+            data = [{"game_id": row[2], "elo": row[1], "predicted": row[0]} for row in rows]
+            return jsonify(data)
+    finally:
+        release_connection(conn)
+
+
+@app.route("/elo-trend-line")
+def eloTrendLine():  
+    conn = get_connection()
+    try:
+        with conn.cursor() as curs:
+            curs.execute("""
+                SELECT DISTINCT ON (team_name) team_name, elo_after
+                FROM eloRatings
+                ORDER BY team_name, game_id DESC
+            """)
+            actual_ratings = {row[0]: row[1] for row in curs.fetchall()}  # inside cursor block now
+            predicted_ratings = getTrendLineData() 
+            return jsonify({
+                "actual": actual_ratings,
+                "predicted": predicted_ratings
+            })
+    finally:
+        release_connection(conn)
+
+
 
 
 

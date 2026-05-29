@@ -31,13 +31,14 @@ def getMinMax(stat):
     with conn.cursor() as cursor:
         cursor.execute(f"SELECT MIN({stat}/games), MAX({stat}/games) FROM playerDB")
         data = cursor.fetchone()
+        print({f"Min_{stat}": data[0], f"Max_{stat}": data[1]})
     return {f"Min_{stat}": data[0], f"Max_{stat}": data[1]}
 
 def getDataOnce():
     main_data = []
     relevant_stats = [
         "pts", "ast", "reb", "tov", "stl", "blk", "ws",
-        "vorp", "pmon", "pmnet"
+        "vorp", "pmon", "pmnet", "ts_pts", "efg"
     ]
     for stat in relevant_stats:
         main_data.append(getMinMax(stat))
@@ -80,9 +81,13 @@ def getProduction_Impact_Rating(player_catalog, mainData):
     vorp_min,  vorp_max  = mainData[7]["Min_vorp"],  mainData[7]["Max_vorp"]
     pmon_min,  pmon_max  = mainData[8]["Min_pmon"],  mainData[8]["Max_pmon"]
     pmnet_min, pmnet_max = mainData[9]["Min_pmnet"], mainData[9]["Max_pmnet"]
+    efg_min, efg_max     = mainData[11]["Min_efg"],      mainData[11]["Max_efg"]
+    ts_pts_min, ts_pts_max = mainData[10]["Min_ts_pts"], mainData[10]["Max_ts_pts"]
+
+
 
     for player in player_catalog:
-        games = safe(player[3], default=1.0)  # avoid division by zero
+        games = safe(player[3], default=1.0)  
 
         pts_norm   = ((safe(player[4])/games)  - pts_min)   / (pts_max   - pts_min)
         ast_norm   = ((safe(player[5])/games)  - ast_min)   / (ast_max   - ast_min)
@@ -90,10 +95,12 @@ def getProduction_Impact_Rating(player_catalog, mainData):
         tov_norm   = ((safe(player[7])/games)  - tov_min)   / (tov_max   - tov_min)
         stl_norm   = ((safe(player[8])/games)  - stl_min)   / (stl_max   - stl_min)
         blk_norm   = ((safe(player[9])/games)  - blk_min)   / (blk_max   - blk_min)
-        ws_norm    = (safe(player[11])         - ws_min)    / (ws_max    - ws_min)
-        vorp_norm  = (safe(player[12])         - vorp_min)  / (vorp_max  - vorp_min)
-        pmon_norm  = (safe(player[13])         - pmon_min)  / (pmon_max  - pmon_min)
-        pmnet_norm = (safe(player[14])         - pmnet_min) / (pmnet_max - pmnet_min)
+        ws_norm    = ((safe(player[12])/games) - ws_min)    / (ws_max    - ws_min)
+        vorp_norm  = ((safe(player[13])/games) - vorp_min)  / (vorp_max  - vorp_min)
+        pmon_norm  = ((safe(player[14])/games) - pmon_min)    / (pmon_max  - pmon_min)
+        pmnet_norm = ((safe(player[15]) / games) - pmnet_min) / (pmnet_max - pmnet_min)
+        efgs_norm = ((safe(player[11]) / games) - efg_min) / (efg_max - efg_min)
+        tp_pts_norm = ((safe(player[16]) / games) - ts_pts_min) / (ts_pts_max - ts_pts_min)
 
         production = (
             pts_norm  * 0.4  +
@@ -111,8 +118,15 @@ def getProduction_Impact_Rating(player_catalog, mainData):
             pmnet_norm * 0.10
         )
 
+        efficieny = (
+
+            0.7 * efgs_norm +
+            0.3 * tp_pts_norm
+
+        )
+
         save_ratings(player[1], production=production, impact=impact)
-        print(f"player:{player[1]} Prod: {production}, impact: {impact}")
+        print(f"player:{player[1]} Prod: {production}, impact: {impact}, efficiency {efficieny}")
 
 def main():
     resetAndReload()

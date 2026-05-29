@@ -31,7 +31,7 @@ def parse_table(html, table_id):
     if not table:
         return {}
     result = {}
-    print(table)
+
     for row in table.find_all("tr"):
         name_td = row.find("td", {"data-stat": "name_display"})
         if not name_td:
@@ -113,6 +113,10 @@ def getPlayerData(teamCode):
             "pmon":   p.get("plus_minus_on"),
             "pmnet":  p.get("plus_minus_net"),
             "ts_pts": s.get("ts_pts_added"),
+            "fg_3pct": s.get("fg3_pct"),
+            "fg_2pct": s.get("fg2_pct"),
+            "fg_pct": s.get("fg_pct"),
+            "ts_pct" : s.get("ts_pct")
         })
 
     return players
@@ -182,11 +186,16 @@ def helper_getEveryTeam(player):
 
 
 def getEveryTeam():
+
     NBA_TEAMS = [
-        "ATL", "BOS", "BKN", "CHA", "CHI", "CLE", "DAL", "DEN", "DET", "GSW",
-        "HOU", "IND", "LAC", "LAL", "MEM", "MIA", "MIL", "MIN", "NOP", "NYK",
-        "OKC", "ORL", "PHI", "PHX", "POR", "SAC", "SAS", "TOR", "UTA", "WAS"
-    ]
+    # East
+    "DET", "BOS", "NYK", "CLE", "TOR", "ATL", "PHI", "ORL",
+    "CHO", "MIA", "MIL", "CHI", "BRK", "IND", "WAS",
+    # West
+    "OKC", "SAS", "DEN", "LAL", "HOU", "MIN", "PHO", "POR",
+    "LAC", "GSW", "NOP", "DAL", "MEM", "SAC", "UTA"
+]
+
 
     failed = []
 
@@ -196,9 +205,12 @@ def getEveryTeam():
             players = getPlayerData(team)
             for player in players:
                 helper_getEveryTeam(player)
+                
             time.sleep(random.uniform(8, 15))
+            print(f"successfully got data for team {team}")
         except Exception as e:
             print(f"Failed team {team} because of {e}")
+            
             failed.append(team)
 
     while failed:
@@ -215,6 +227,10 @@ def getEveryTeam():
             except Exception as e:
                 print(f"Failed and retrying team {team} because of {e}")
                 continue
+    print(failed)
+
+
+
 
 
 def getInjuredPlayers():
@@ -237,7 +253,8 @@ def getInjuredPlayers():
         save_injury_to_db(player)
 
 
-print(getInjuredPlayers())
 
+
+getEveryTeam()
 conn.commit()
 conn.close()
