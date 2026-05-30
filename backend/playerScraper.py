@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import httpx
+import json
 import regex as re
 from dotenv import load_dotenv, find_dotenv
 import psycopg2
@@ -128,8 +129,8 @@ def save_to_db(player):
     try:
         cursor.execute(
             """
-            INSERT INTO playerDB (name, team, games, pts, ast, reb, tov, stl, blk, fga, efg, ws, vorp, pmon, pmnet, ts_pts)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            INSERT INTO playerDB (name, team, games, pts, ast, reb, tov, stl, blk, fga, efg, ws, vorp, pmon, pmnet, ts_pts,three_point_percent, twop_point_percent, fg_percent, ts_percent)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             """,
             (
                 clean(player["name"]),
@@ -147,7 +148,11 @@ def save_to_db(player):
                 clean(player["vorp"]),
                 clean(player["pmon"]),
                 clean(player["pmnet"]),
-                clean(player["ts_pts"])
+                clean(player["ts_pts"]),
+                clean(player["fg_3pct"]),
+                clean(player["fg_2pct"]),
+                clean(player["fg_pct"]),
+                clean(player["ts_pct"])
             )
         )
     except Exception as e:

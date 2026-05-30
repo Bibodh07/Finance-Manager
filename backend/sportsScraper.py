@@ -114,13 +114,27 @@ def getStartingElo(teamName: str):
 
     advanced_table = html.find("table", id="advanced")
 
-    stats = {
-        "team": teamName,
-        "ws":      advanced_table.find_all("td", {"data-stat": "ws"})[-1].get_text(),
-        "ws_per48": advanced_table.find_all("td", {"data-stat": "ws_per_48"})[-1].get_text(),
-        "bpm":     advanced_table.find_all("td", {"data-stat": "bpm"})[-1].get_text(),
-    }
+    srs_tag = html.find("a", href="/about/glossary.html#srs")
+    srs_value = srs_tag.parent.parent.get_text().split(":")[1].strip().split()[0]
 
+
+    team_misc = html.find("table", id="team_misc")
+
+  
+    
+    stats = {
+        "team":      teamName,
+        "ws":        float(advanced_table.find_all("td", {"data-stat": "ws"})[-1].get_text() or 0),
+        "ws_per48":  float(advanced_table.find_all("td", {"data-stat": "ws_per_48"})[-1].get_text() or 0),
+        "bpm":       float(advanced_table.find_all("td", {"data-stat": "bpm"})[-1].get_text() or 0),
+        "srs":       float(srs_value),
+        "win_pyth":  float(team_misc.find("td", attrs={"data-stat":"wins_pyth"}).get_text() or 0),
+        "lose_pyth": float(team_misc.find("td", attrs={"data-stat":"losses_pyth"}).get_text() or 0),
+        "sos":       float(team_misc.find("td", attrs={"data-stat":"sos"}).get_text() or 0),
+        "ortg":      float(team_misc.find("td", attrs={"data-stat":"off_rtg"}).get_text() or 0),
+        "drtg":      float(team_misc.find("td", attrs={"data-stat":"def_rtg"}).get_text() or 0)
+
+    }
     print(stats)
 
     return stats
