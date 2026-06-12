@@ -1,0 +1,24 @@
+{
+    "GSW": {
+        "games_played": 18,
+        "total_wins": 12,
+        "home_games": 10,
+        "home_wins": 8,
+        "away_games": 8,
+        "away_wins": 4,
+        "last_10_wins": 7,
+        "avg_point_diff": 5.2,
+        "elo": 1610
+    },
+    "LAL": {
+        "games_played": 18,
+        "total_wins": 9,
+        "home_games": 9,
+        "home_wins": 4,
+        "away_games": 9,
+        "away_wins": 5,
+        "last_10_wins": 5,
+        "avg_point_diff": 0.8,
+        "elo": 1490
+    }
+}
