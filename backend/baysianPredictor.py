@@ -11,7 +11,7 @@ from scipy.stats import zscore, norm
 def baysianPredictorHome(team):
 
 
-    df = pd.read_json("testData.json", orient="columns")
+    df = pd.read_json("stats.json", orient="columns")
     df = df.T
 
     df_team = df.loc[team]
@@ -76,7 +76,7 @@ def baysianPredictorHome(team):
 
 def baysianPredictorAway(team):
 
-    df = pd.read_json("testData.json", orient="columns")
+    df = pd.read_json("stats.json", orient="columns")
     df = df.T
 
     df_team = df.loc[team]
@@ -124,5 +124,3 @@ def predict(home_team, away_team):
     return winner, prob
 
 
-
-predict(home_team = "GSW", away_team= "LAL")
