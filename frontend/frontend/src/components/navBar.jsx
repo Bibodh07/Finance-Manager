@@ -18,10 +18,10 @@ export default function NavBar({ page, setPage }) {
           Current Fixtures
         </li>
         <li
-          className={page === "investment" ? "active" : ""}
-          onClick={() => setPage("investment")}
+          className={page === "analytics" ? "active" : ""}
+          onClick={() => setPage("analytics")}
         >
-          Investment
+          Analytics
         </li>
       </ul>
     </nav>

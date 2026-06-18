@@ -1,0 +1,229 @@
+/* investment.css */
+
+main {
+    width: 100%;
+    margin: 0;
+    padding: 2rem clamp(1rem, 4vw, 3rem);
+    font-family: 'Inter', sans-serif;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.25rem;
+}
+
+.page-subtitle {
+    font-size: 0.9rem;
+    color: #8892a4;
+    margin-bottom: 2rem;
+}
+
+.scatterChart {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    width: 100%;
+    overflow: hidden;
+}
+
+.scatterChart {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: clamp(0.75rem, 3vw, 1.5rem); /* shrinks on mobile */
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.chartSubtitle {
+    font-size: 0.85rem;
+    color: #8892a4;
+    margin-bottom: 1rem;
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+
+.analyticsCard {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+
+}
+
+.sideCard {
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.sideCard:hover {
+    border-color: #00b4d8;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 180, 216, 0.15);
+}
+
+.sideCard.expanded {
+    border-color: #f97316;
+}
+
+.cardTitle {
+    font-family: 'Ubuntu Mono', monospace;
+    color: #00b4d8;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.cardSubtitle {
+    font-size: 0.8rem;
+    color: #8892a4;
+    margin-bottom: 1rem;
+}
+
+.neutral {
+    color: #f97316;
+}
+
+.analyticsGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    width: 100%;
+}
+
+.mainBody {
+    width: 100%;
+    padding: 2rem clamp(1rem, 4vw, 3rem);
+}
+
+
+
+.analyticsCard {
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.tableWrapper {
+    animation: fadeIn 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.team-elo-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 0.82rem;
+}
+
+.team-elo-table thead tr {
+    background-color: rgba(0, 180, 216, 0.15);
+    border-bottom: 1px solid #00b4d8;
+}
+
+.team-elo-table th {
+    color: #00b4d8;
+    text-align: left;
+    padding: 0.6rem 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.team-elo-table th:hover {
+    color: #f97316;
+}
+
+.team-elo-table td {
+    padding: 0.55rem 0.75rem;
+    color: #c9d1d9;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    white-space: nowrap;
+}
+
+.team-elo-table tbody tr:hover {
+    background-color: rgba(0, 180, 216, 0.08);
+}
+
+.positive {
+    color: #4ade80;
+}
+
+.negative {
+    color: #f87171;
+}
+
+.neutral {
+    color: #f97316;
+}
+
+.analyticsGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    width: 100%;
+}
+
+.analyticsCard {
+    min-width: 0;  /* prevents overflow */
+    overflow: hidden;
+}
+
+.tableWrapper {
+    width: 100%;
+    overflow-x: auto;  /* scroll if table too wide */
+    padding-top: 0.5rem;
+}
+
+.team-elo-table {
+    min-width: 100%;
+    table-layout: auto;
+}
+
+.team-elo-table td,
+.team-elo-table th {
+    padding: 0.55rem 0.6rem;
+    white-space: nowrap;
+}
+
+.analyticsSection {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    overflow: hidden;
+}
+
+.bottomGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}

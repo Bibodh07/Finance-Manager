@@ -32,8 +32,14 @@ conn = psycopg2.connect(
 
 def simulate():
 
+    total = correct = 0
+
 
     stats = {}
+
+
+
+
 
     with conn.cursor() as curs:
         curs.execute(
@@ -43,6 +49,10 @@ def simulate():
             """
         )
         fixtures = curs.fetchall()
+
+
+        player_df = pd.read_sql("SELECT * FROM playerdb", conn)
+        team_overall = player_df.groupby("team")["overall_score"].mean().to_dict()
 
 
     NBA_TEAMS = {
@@ -91,17 +101,32 @@ def simulate():
 
 
 
-    for date, game in df.iterrows():
+    for _, game in df.iterrows():
 
         current_games = game["game_date"]
         games_tillNow = all_games[all_games["game_date"] < current_games]
         avg_games = games_tillNow.groupby("Team")["game_date"].count().mean()
 
-        if avg_games < 10:
-                power_predict(team1=NAME_TO_ABB[game["homeTeam"]], team2=NAME_TO_ABB[game["awayTeam"]])
+
+        if pd.isna(avg_games) or avg_games < 10:
+                predicted_winner, prob = power_predict(team1=NAME_TO_ABB[game["homeTeam"]], team2=NAME_TO_ABB[game["awayTeam"]])
 
         else:
-                bayes_predict(home_team=game["homeTeam"], away_team=game["awayTeam"])
+                predicted_winner, prob = bayes_predict(home_team=game["homeTeam"], away_team=game["awayTeam"], is_home_b2b=game["isHomeB2B"], is_away_b2b=game["isAwayB2B"])
+
+        
+
+        actual_winner = game["winner"]
+
+
+
+
+        if predicted_winner == actual_winner:
+            correct += 1
+        total += 1
+
+
+        print(f'\n{game["homeTeam"]} vs {game["awayTeam"]} → Predicted Winner {predicted_winner} wins with {prob:.0%} confidence \n Actual Winner = {actual_winner}')
 
 
         #data update begins here.
@@ -117,7 +142,7 @@ def simulate():
                 "away_wins": 0,
                 "last_10_wins": 0,
                 "avg_point_diff": 0,
-                "elo": 1500,
+                "elo": 1500 + (team_overall.get(NAME_TO_ABB[team], 0.5) - 0.5) * 200,
                 "last_10_diffs": [],
                 "last_10_results":[]
             }
@@ -142,6 +167,9 @@ def simulate():
             stats[team]["last_10_results"].append(1 if game["winner"] == team else 0)
             stats[team]["last_10_results"] = stats[team]["last_10_results"][-10:]  # keep only last 10
             stats[team]["last_10_wins"] = sum(stats[team]["last_10_results"])
+
+
+
             
     
             
@@ -155,8 +183,28 @@ def simulate():
             stats[team]["last_10_diffs"] = stats[team]["last_10_diffs"][-10:]
             stats[team]["avg_point_diff"] = sum(stats[team]["last_10_diffs"]) / len(stats[team]["last_10_diffs"])
 
+        winner = game["winner"]
+        loser = game["awayTeam"] if game["winner"] == game["homeTeam"] else game["homeTeam"]
+
+        winner_elo = stats[winner]["elo"]
+        loser_elo = stats[loser]["elo"]
+
+        expected_winner = 1 / (1 + 10**((loser_elo - winner_elo) / 400))
+        expected_loser = 1 - expected_winner
+
+        stats[winner]["elo"] = winner_elo + 20 * (1 - expected_winner)
+        stats[loser]["elo"] = loser_elo + 20 * (0 - expected_loser)
+
+
         with open("stats.json", "w") as f:
             json.dump(stats, f, indent=4)
+
+
+
+    print(f"Accuracy: {correct/total:.0%} ({correct}/{total} games)")
+
+        
+
     
 
             

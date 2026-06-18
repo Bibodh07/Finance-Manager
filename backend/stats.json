@@ -8,7 +8,7 @@
         "away_wins": 30,
         "last_10_wins": 7,
         "avg_point_diff": 10.3,
-        "elo": 1500,
+        "elo": 1665.5835485789735,
         "last_10_diffs": [
             -10,
             18,
@@ -43,7 +43,7 @@
         "away_wins": 22,
         "last_10_wins": 9,
         "avg_point_diff": 15.2,
-        "elo": 1500,
+        "elo": 1561.0740479105768,
         "last_10_diffs": [
             10,
             32,
@@ -78,7 +78,7 @@
         "away_wins": 25,
         "last_10_wins": 7,
         "avg_point_diff": 4.0,
-        "elo": 1500,
+        "elo": 1581.1374703629149,
         "last_10_diffs": [
             7,
             17,
@@ -113,7 +113,7 @@
         "away_wins": 15,
         "last_10_wins": 3,
         "avg_point_diff": -5.9,
-        "elo": 1500,
+        "elo": 1396.4302063901864,
         "last_10_diffs": [
             3,
             5,
@@ -148,7 +148,7 @@
         "away_wins": 23,
         "last_10_wins": 6,
         "avg_point_diff": 6.3,
-        "elo": 1500,
+        "elo": 1558.827318652323,
         "last_10_diffs": [
             11,
             -4,
@@ -183,7 +183,7 @@
         "away_wins": 8,
         "last_10_wins": 3,
         "avg_point_diff": -13.7,
-        "elo": 1500,
+        "elo": 1280.8799168748576,
         "last_10_diffs": [
             -3,
             -17,
@@ -218,7 +218,7 @@
         "away_wins": 23,
         "last_10_wins": 6,
         "avg_point_diff": 2.9,
-        "elo": 1500,
+        "elo": 1580.3924561571641,
         "last_10_diffs": [
             5,
             -11,
@@ -253,7 +253,7 @@
         "away_wins": 25,
         "last_10_wins": 7,
         "avg_point_diff": 2.8,
-        "elo": 1500,
+        "elo": 1574.7102324339066,
         "last_10_diffs": [
             -17,
             21,
@@ -288,7 +288,7 @@
         "away_wins": 19,
         "last_10_wins": 7,
         "avg_point_diff": -1.1,
-        "elo": 1500,
+        "elo": 1512.8410294811902,
         "last_10_diffs": [
             4,
             -52,
@@ -323,7 +323,7 @@
         "away_wins": 17,
         "last_10_wins": 5,
         "avg_point_diff": -0.4,
-        "elo": 1500,
+        "elo": 1479.1932877702716,
         "last_10_diffs": [
             17,
             -21,
@@ -358,7 +358,7 @@
         "away_wins": 26,
         "last_10_wins": 8,
         "avg_point_diff": 11.2,
-        "elo": 1500,
+        "elo": 1627.6653475618016,
         "last_10_diffs": [
             7,
             15,
@@ -393,7 +393,7 @@
         "away_wins": 22,
         "last_10_wins": 6,
         "avg_point_diff": 3.2,
-        "elo": 1500,
+        "elo": 1500.7878297348323,
         "last_10_diffs": [
             20,
             4,
@@ -428,7 +428,7 @@
         "away_wins": 22,
         "last_10_wins": 6,
         "avg_point_diff": 6.4,
-        "elo": 1500,
+        "elo": 1542.8127832069065,
         "last_10_diffs": [
             1,
             -7,
@@ -463,7 +463,7 @@
         "away_wins": 22,
         "last_10_wins": 6,
         "avg_point_diff": 12.2,
-        "elo": 1500,
+        "elo": 1498.7962806059882,
         "last_10_diffs": [
             13,
             52,
@@ -498,7 +498,7 @@
         "away_wins": 13,
         "last_10_wins": 2,
         "avg_point_diff": -10.6,
-        "elo": 1500,
+        "elo": 1339.549596100405,
         "last_10_diffs": [
             -18,
             -1,
@@ -533,7 +533,7 @@
         "away_wins": 28,
         "last_10_wins": 8,
         "avg_point_diff": 11.8,
-        "elo": 1500,
+        "elo": 1624.3633036090266,
         "last_10_diffs": [
             21,
             22,
@@ -568,7 +568,7 @@
         "away_wins": 11,
         "last_10_wins": 1,
         "avg_point_diff": -20.4,
-        "elo": 1500,
+        "elo": 1281.5426845069449,
         "last_10_diffs": [
             -10,
             1,
@@ -603,7 +603,7 @@
         "away_wins": 9,
         "last_10_wins": 1,
         "avg_point_diff": -10.4,
-        "elo": 1500,
+        "elo": 1370.0884437426146,
         "last_10_diffs": [
             -5,
             -21,
@@ -638,7 +638,7 @@
         "away_wins": 13,
         "last_10_wins": 3,
         "avg_point_diff": -7.9,
-        "elo": 1500,
+        "elo": 1372.1247862815628,
         "last_10_diffs": [
             -32,
             -14,
@@ -673,7 +673,7 @@
         "away_wins": 6,
         "last_10_wins": 0,
         "avg_point_diff": -18.1,
-        "elo": 1500,
+        "elo": 1238.7081811914663,
         "last_10_diffs": [
             -5,
             -35,
@@ -708,7 +708,7 @@
         "away_wins": 8,
         "last_10_wins": 1,
         "avg_point_diff": -14.2,
-        "elo": 1500,
+        "elo": 1281.4314269424187,
         "last_10_diffs": [
             -23,
             -6,
@@ -743,7 +743,7 @@
         "away_wins": 19,
         "last_10_wins": 6,
         "avg_point_diff": 2.1,
-        "elo": 1500,
+        "elo": 1506.4921247116094,
         "last_10_diffs": [
             25,
             1,
@@ -778,7 +778,7 @@
         "away_wins": 10,
         "last_10_wins": 3,
         "avg_point_diff": -7.5,
-        "elo": 1500,
+        "elo": 1336.6982949750632,
         "last_10_diffs": [
             -7,
             7,
@@ -813,7 +813,7 @@
         "away_wins": 30,
         "last_10_wins": 8,
         "avg_point_diff": 13.6,
-        "elo": 1500,
+        "elo": 1672.1803727675765,
         "last_10_diffs": [
             25,
             32,
@@ -848,7 +848,7 @@
         "away_wins": 18,
         "last_10_wins": 7,
         "avg_point_diff": 13.1,
-        "elo": 1500,
+        "elo": 1495.5930251553057,
         "last_10_diffs": [
             35,
             31,
@@ -883,7 +883,7 @@
         "away_wins": 23,
         "last_10_wins": 5,
         "avg_point_diff": -0.3,
-        "elo": 1500,
+        "elo": 1528.990311793965,
         "last_10_diffs": [
             2,
             -22,
@@ -918,7 +918,7 @@
         "away_wins": 20,
         "last_10_wins": 5,
         "avg_point_diff": 3.0,
-        "elo": 1500,
+        "elo": 1490.595095063521,
         "last_10_diffs": [
             -2,
             25,
@@ -953,7 +953,7 @@
         "away_wins": 7,
         "last_10_wins": 3,
         "avg_point_diff": -10.3,
-        "elo": 1500,
+        "elo": 1328.970765048856,
         "last_10_diffs": [
             -44,
             -4,
@@ -988,7 +988,7 @@
         "away_wins": 8,
         "last_10_wins": 3,
         "avg_point_diff": -1.6,
-        "elo": 1500,
+        "elo": 1296.3561586536255,
         "last_10_diffs": [
             -7,
             -1,
@@ -1023,7 +1023,7 @@
         "away_wins": 26,
         "last_10_wins": 10,
         "avg_point_diff": 10.5,
-        "elo": 1500,
+        "elo": 1610.5765242657276,
         "last_10_diffs": [
             2,
             7,

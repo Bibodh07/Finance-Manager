@@ -11,6 +11,7 @@ import json
 from scipy.stats import linregress
 import numpy as np
 from psycopg2 import pool
+import pandas as pd
 
 
 
@@ -65,13 +66,7 @@ connection_pool = pool.SimpleConnectionPool(
 # ==============================
 
 def get_connection():
-    return psycopg2.connect(
-        dbname=app.config["data_base"],
-        user=app.config["dbuser"],
-        password=app.config["dbpassword"],
-        host=app.config["dbhost"],
-        port=app.config["dbport"]
-    )
+    return connection_pool.getconn()
 
 def release_connection(conn):
     connection_pool.putconn(conn)
@@ -474,6 +469,37 @@ def eloTrendLine():
     finally:
         release_connection(conn)
 
+@app.route("/team-stats")
+def team_stats():
+    with open("stats.json") as f:
+        stats = json.load(f)
+    return jsonify(stats)
+
+@app.route("/team-b2b")
+def team_b2b():
+    conn = get_connection()
+    try:
+        with conn.cursor() as curs:
+            curs.execute("SELECT * FROM fixtures")
+            fixtures = curs.fetchall()
+    finally:
+        release_connection(conn)
+
+    df = pd.DataFrame(fixtures, columns=["gameid", "homeTeam", "awayTeam", "homeScore", "awayScore", "winner", "game_date", "isHomeB2B", "isAwayB2B"])
+    
+    # count B2Bs per team
+    home_b2b = df[df["isHomeB2B"] == True].groupby("homeTeam").size().reset_index(name="b2b_count")
+    home_b2b.columns = ["team", "b2b_count"]
+    
+    away_b2b = df[df["isAwayB2B"] == True].groupby("awayTeam").size().reset_index(name="b2b_count")
+    away_b2b.columns = ["team", "b2b_count"]
+
+    combined = pd.concat([home_b2b, away_b2b]).groupby("team")["b2b_count"].sum().reset_index()
+    
+    return jsonify(combined.to_dict(orient="records"))
+
+
+    
 
 
 
