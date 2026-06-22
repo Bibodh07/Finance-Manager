@@ -227,3 +227,46 @@ main {
     gap: 1.5rem;
     align-items: start;
 }
+
+/* Page load - cards pop in with stagger */
+.analyticsSection {
+    animation: popIn 0.4s ease backwards;
+}
+
+.analyticsSection:nth-child(1) { animation-delay: 0.1s; }
+
+.bottomGrid .analyticsSection:nth-child(1) { animation-delay: 0.2s; }
+.bottomGrid .analyticsSection:nth-child(2) { animation-delay: 0.3s; }
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Smooth height transition for expanding sections */
+.analyticsSection {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tableWrapper {
+    animation: fadeSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-12px);
+    }
+    to {
+        opacity: 1;
+        max-height: 2000px;
+        transform: translateY(0);
+    }
+}

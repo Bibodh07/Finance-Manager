@@ -1,24 +1,22 @@
 {
     "GSW": {
-        "games_played": 18,
-        "total_wins": 12,
-        "home_games": 10,
-        "home_wins": 8,
-        "away_games": 8,
-        "away_wins": 4,
-        "last_10_wins": 7,
-        "avg_point_diff": 5.2,
-        "elo": 1610
+        "points_history": [118, 125, 109, 132, 115, 122, 119, 127, 111, 105, 130, 117, 121, 108, 124, 113, 129, 116, 120, 110],
+        "home_points_history": [122, 128, 119, 127, 130, 121, 124, 129, 120, 117],
+        "away_points_history": [118, 109, 132, 115, 111, 105, 108, 113, 116, 110],
+        "avg_points": 118.45,
+        "std_points": 7.8,
+        "home_avg_points": 123.7,
+        "away_avg_points": 113.7,
+        "elo": 1581.1
     },
     "LAL": {
-        "games_played": 18,
-        "total_wins": 9,
-        "home_games": 9,
-        "home_wins": 4,
-        "away_games": 9,
-        "away_wins": 5,
-        "last_10_wins": 5,
-        "avg_point_diff": 0.8,
-        "elo": 1490
+        "points_history": [112, 119, 124, 108, 115, 121, 117, 109, 126, 113, 118, 122, 110, 116, 120, 107, 123, 114, 119, 111],
+        "home_points_history": [124, 121, 126, 118, 122, 120, 123, 119, 117, 116],
+        "away_points_history": [112, 119, 108, 115, 117, 109, 113, 110, 107, 114],
+        "avg_points": 116.55,
+        "std_points": 5.9,
+        "home_avg_points": 120.6,
+        "away_avg_points": 112.4,
+        "elo": 1581.4
     }
 }
