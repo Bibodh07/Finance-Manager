@@ -144,7 +144,22 @@ def simulate():
                 "avg_point_diff": 0,
                 "elo": 1500 + (team_overall.get(NAME_TO_ABB[team], 0.5) - 0.5) * 200,
                 "last_10_diffs": [],
-                "last_10_results":[]
+                "last_10_results":[],
+                "points_allowedHistory":[],
+                "home_pointsAllowedHistory": [],
+                "away_pointsAllowedHistory": [],
+                "avg_point_allowed": 0,
+                "avgHomePointAllowed": 0,
+                "avgAwayPointAllowed": 0,
+                "avg_point_scored": 0,
+                "points_scoredHistory":[],
+                "avgHomePointScored": 0,
+                "avgAwayPointScored": 0,
+                "home_pointsScoredHistory": [],
+                "away_pointsScoredHistory": [],
+
+        
+
             }
             
            
@@ -156,24 +171,39 @@ def simulate():
     
             if game["homeTeam"] == team:
                 stats[team]["home_games"] += 1
+                stats[team]["home_pointsAllowedHistory"].append(game["awayScore"])
+                stats[team]["home_pointsScoredHistory"].append(game["homeScore"])
                 if game["winner"] == team:
                     stats[team]["home_wins"] += 1
             else:
                 stats[team]["away_games"] += 1
+                stats[team]["away_pointsAllowedHistory"].append(game["homeScore"])
+                stats[team]["away_pointsScoredHistory"].append(game["awayScore"])
                 if game["winner"] == team:
                     stats[team]["away_wins"] += 1
     
 
             stats[team]["last_10_results"].append(1 if game["winner"] == team else 0)
-            stats[team]["last_10_results"] = stats[team]["last_10_results"][-10:]  # keep only last 10
+            stats[team]["last_10_results"] = stats[team]["last_10_results"][-10:]  
             stats[team]["last_10_wins"] = sum(stats[team]["last_10_results"])
+            stats[team]["points_allowedHistory"].append(game["homeScore"] if team == game["awayTeam"] else game["awayScore"])
+            stats[team]["avg_point_allowed"] = sum(stats[team]["points_allowedHistory"])/len(stats[team]["points_allowedHistory"])
+            stats[team]["points_scoredHistory"].append(game["homeScore"] if team == game["homeTeam"] else game["awayScore"])
+            stats[team]["avg_point_scored"] = sum(stats[team]["points_scoredHistory"])/len(stats[team]["points_scoredHistory"])
 
 
+            if len(stats[team]["home_pointsAllowedHistory"]) > 0:
+                stats[team]["avgHomePointAllowed"] = sum(stats[team]["home_pointsAllowedHistory"]) / len(stats[team]["home_pointsAllowedHistory"])
 
-            
-    
-            
-        # point diff for this game
+            if len(stats[team]["away_pointsAllowedHistory"]) > 0:
+                stats[team]["avgAwayPointAllowed"] = sum(stats[team]["away_pointsAllowedHistory"]) / len(stats[team]["away_pointsAllowedHistory"])
+
+            if len(stats[team]["home_pointsScoredHistory"]) > 0:
+                stats[team]["avgHomePointScored"] = sum(stats[team]["home_pointsScoredHistory"]) / len(stats[team]["home_pointsScoredHistory"])
+
+            if len(stats[team]["away_pointsScoredHistory"]) > 0:
+                stats[team]["avgAwayPointScored"] = sum(stats[team]["away_pointsScoredHistory"]) / len(stats[team]["away_pointsScoredHistory"])
+   
             if game["homeTeam"] == team:
                 point_diff = int(game["homeScore"]) - int(game["awayScore"])
             else:
@@ -194,6 +224,7 @@ def simulate():
 
         stats[winner]["elo"] = winner_elo + 20 * (1 - expected_winner)
         stats[loser]["elo"] = loser_elo + 20 * (0 - expected_loser)
+
 
 
         with open("stats.json", "w") as f:
