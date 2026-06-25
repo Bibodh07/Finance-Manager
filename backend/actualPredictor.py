@@ -157,8 +157,10 @@ def simulate():
                 "avgAwayPointScored": 0,
                 "home_pointsScoredHistory": [],
                 "away_pointsScoredHistory": [],
-
-        
+                "b2b_scoringHistory": [],
+                "b2b_defenseHistory": [],
+                "average_score_onb2b": 0,
+                "average_defensive_recrod_onb2b": 0,
 
             }
             
