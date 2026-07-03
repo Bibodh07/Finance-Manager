@@ -12,6 +12,8 @@ from scipy.stats import linregress
 import numpy as np
 from psycopg2 import pool
 import pandas as pd
+from analyticsData import * 
+from baysianPredictor import predict as bayes_predict
 
 
 
@@ -498,6 +500,95 @@ def team_b2b():
     
     return jsonify(combined.to_dict(orient="records"))
 
+
+@app.route("/game-analytics/<home_team>/<away_team>")
+def game_analytics(home_team, away_team):
+    is_home_b2b = request.args.get("isHomeB2B", "false").lower() == "true"
+    is_away_b2b = request.args.get("isAwayB2B", "false").lower() == "true"
+
+    
+    NBA_TEAMS = {
+        "ATL": "Atlanta Hawks",
+        "BOS": "Boston Celtics",
+        "BRK": "Brooklyn Nets",
+        "CHO": "Charlotte Hornets",
+        "CHI": "Chicago Bulls",
+        "CLE": "Cleveland Cavaliers",
+        "DAL": "Dallas Mavericks",
+        "DEN": "Denver Nuggets",
+        "DET": "Detroit Pistons",
+        "GSW": "Golden State Warriors",
+        "HOU": "Houston Rockets",
+        "IND": "Indiana Pacers",
+        "LAC": "Los Angeles Clippers",
+        "LAL": "Los Angeles Lakers",
+        "MEM": "Memphis Grizzlies",
+        "MIA": "Miami Heat",
+        "MIL": "Milwaukee Bucks",
+        "MIN": "Minnesota Timberwolves",
+        "NOP": "New Orleans Pelicans",
+        "NYK": "New York Knicks",
+        "OKC": "Oklahoma City Thunder",
+        "ORL": "Orlando Magic",
+        "PHI": "Philadelphia 76ers",
+        "PHO": "Phoenix Suns",
+        "POR": "Portland Trail Blazers",
+        "SAC": "Sacramento Kings",
+        "SAS": "San Antonio Spurs",
+        "TOR": "Toronto Raptors",
+        "UTA": "Utah Jazz",
+        "WAS": "Washington Wizards"
+    }
+
+    NAME_TO_ABB = {v: k for k, v in NBA_TEAMS.items()}
+
+    # expected points
+    expected = expectedPointsPerGame(
+        homeTeam=home_team,
+        awayTeam=away_team,
+        isB2B_home=is_home_b2b,
+        isB2B_away=is_away_b2b
+    )
+
+    # bayesian win probability
+    predicted_winner, prob = bayes_predict(
+        home_team=home_team,
+        away_team=away_team,
+        is_home_b2b=is_home_b2b,
+        is_away_b2b=is_away_b2b
+    )
+
+    # confidence interval on expected points using std from stats.json
+    import json
+    from scipy.stats import norm
+    with open("stats.json") as f:
+        stats = json.load(f)
+
+    home_std = stats[home_team]["avg_point_diff"]  # proxy for std for now
+    away_std = stats[away_team]["avg_point_diff"]
+
+    home_pts = expected["home"]["expected_points"]
+    away_pts = expected["away"]["expected_points"]
+
+    return jsonify({
+        "expected_points": expected,
+        "prediction": {
+            "winner": predicted_winner,
+            "probability": round(prob, 2)
+        },
+        "confidence_intervals": {
+            "home": {
+                "lower": round(home_pts - 1.96 * abs(home_std), 1),
+                "upper": round(home_pts + 1.96 * abs(home_std), 1)
+            },
+            "away": {
+                "lower": round(away_pts - 1.96 * abs(away_std), 1),
+                "upper": round(away_pts + 1.96 * abs(away_std), 1)
+            }
+        },
+        "home_player": playerToWatch(NAME_TO_ABB.get(home_team, home_team)),
+        "away_player": playerToWatch(NAME_TO_ABB.get(away_team, away_team))
+    })
 
     
 

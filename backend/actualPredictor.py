@@ -177,12 +177,19 @@ def simulate():
                 stats[team]["home_pointsScoredHistory"].append(game["homeScore"])
                 if game["winner"] == team:
                     stats[team]["home_wins"] += 1
+                if game["isHomeB2B"]: 
+                    stats[team]["b2b_scoringHistory"].append(game["homeScore"])
+                    stats[team]["b2b_defenseHistory"].append(game["awayScore"])
             else:
                 stats[team]["away_games"] += 1
                 stats[team]["away_pointsAllowedHistory"].append(game["homeScore"])
                 stats[team]["away_pointsScoredHistory"].append(game["awayScore"])
                 if game["winner"] == team:
                     stats[team]["away_wins"] += 1
+                if game["isAwayB2B"]: 
+                    stats[team]["b2b_scoringHistory"].append(game["awayScore"])
+                    stats[team]["b2b_defenseHistory"].append(game["homeScore"])
+
     
 
             stats[team]["last_10_results"].append(1 if game["winner"] == team else 0)
@@ -205,7 +212,19 @@ def simulate():
 
             if len(stats[team]["away_pointsScoredHistory"]) > 0:
                 stats[team]["avgAwayPointScored"] = sum(stats[team]["away_pointsScoredHistory"]) / len(stats[team]["away_pointsScoredHistory"])
-   
+
+            if len(stats[team]["b2b_scoringHistory"]) > 0:
+                stats[team]["average_score_onb2b"] = sum(stats[team]["b2b_scoringHistory"]) / len(stats[team]["b2b_scoringHistory"])
+
+            if len(stats[team]["b2b_scoringHistory"]) > 0:
+                stats[team]["average_score_onb2b"] = sum(stats[team]["b2b_scoringHistory"]) / len(stats[team]["b2b_scoringHistory"])
+
+            if len(stats[team]["b2b_defenseHistory"]) > 0:
+                stats[team]["average_defensive_recrod_onb2b"] = sum(stats[team]["b2b_defenseHistory"]) / len(stats[team]["b2b_defenseHistory"])
+
+
+
+
             if game["homeTeam"] == team:
                 point_diff = int(game["homeScore"]) - int(game["awayScore"])
             else:
