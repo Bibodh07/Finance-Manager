@@ -501,6 +501,26 @@ def team_b2b():
     return jsonify(combined.to_dict(orient="records"))
 
 
+
+@app.route("/getTeamOdds")
+def get_teamOdds():
+
+    with psycopg2.connect(
+        dbname=os.getenv("data_base"),
+        user=os.getenv("dbuser"),
+        password=os.getenv("dbpassword"),
+        host=os.getenv("dbhost"),
+        port=int(os.getenv("dbport"))
+    ) as conn:
+        player_df = pd.read_sql(
+            "SELECT * FROM eloratings",
+            conn,
+
+        )
+    player_df["net_rating"] = (player_df["elo_after"]) - (player_df["elo_before"])   
+    return jsonify(player_df.to_dict(orient="records"))
+
+
 @app.route("/game-analytics/<home_team>/<away_team>")
 def game_analytics(home_team, away_team):
     is_home_b2b = request.args.get("isHomeB2B", "false").lower() == "true"

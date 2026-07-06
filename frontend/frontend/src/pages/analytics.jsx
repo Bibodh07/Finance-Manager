@@ -20,8 +20,27 @@ function GetDBdata({ setData, team1, team2 }) {
     return null
 }
 
+
+function GETOddsData({ setTeamData }) {
+    useEffect(() => {
+        axios
+            .get("http://127.0.0.1:5000/getTeamOdds")
+            .then(res => {
+                const topFive = [...res.data]
+                    .sort((a, b) => b.net_rating - a.net_rating)
+                    .slice(0, 5);
+
+                setTeamData(topFive);
+            })
+            .catch(err => console.error(err));
+    }, []);
+
+    return null
+}
+
 function Analytics() {
     const [data, setData] = useState(null)
+    const [getTeamData, setTeamData] = useState([])
     const selectedTeam = "Boston Celtics"
     const opponent = "Los Angeles Lakers"
 
@@ -32,6 +51,13 @@ function Analytics() {
                 team1={selectedTeam}
                 team2={opponent}
             />
+
+            <GETOddsData
+                setTeamData={setTeamData}
+            />
+
+
+            {console.log(getTeamData)}
 
             <div className="dashboard">
                 <div className="topCard">
@@ -83,7 +109,19 @@ function Analytics() {
 
                     </div>
                 </div>
+                <div className="secondCard bottomGrid">
+    {getTeamData.map((team) => (
+        <p key={team.id}>
+            {team.team_name} — {team.net_rating}
+        </p>
+    ))}
+
+                </div>
+
             </div>
+
+
+
         </main>
     )
 }

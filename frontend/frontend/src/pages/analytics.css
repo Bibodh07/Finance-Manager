@@ -224,3 +224,10 @@
 .fixtureTitle {
     color: #f97316;
 }
+
+
+.secondCard{
+    background-color: #f97316;
+    width: 50%;
+    border-radius: 15px;
+}
