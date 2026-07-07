@@ -56,9 +56,6 @@ function Analytics() {
                 setTeamData={setTeamData}
             />
 
-
-            {console.log(getTeamData)}
-
             <div className="dashboard">
                 <div className="topCard">
                     <div className="matchupLayout">
@@ -71,12 +68,12 @@ function Analytics() {
 
                         {/* Right — fixture + stats */}
                         <div className="fixtureSection">
-                            <p>Latest Fixture</p>
-                             <div className="fixtureHeader">
-        <img src={LOGOS[selectedTeam]} alt={selectedTeam} className="fixtureLogo" />
-        <p className="fixtureTitle">VS</p>
-        <img src={LOGOS[opponent]} alt={opponent} className="fixtureLogo" />
-    </div>
+                            <p className="sectionLabel">Latest Fixture</p>
+                            <div className="fixtureHeader">
+                                <img src={LOGOS[selectedTeam]} alt={selectedTeam} className="fixtureLogo" />
+                                <p className="fixtureTitle">VS</p>
+                                <img src={LOGOS[opponent]} alt={opponent} className="fixtureLogo" />
+                            </div>
 
                             {data && (
                                 <div className="statsGrid">
@@ -90,38 +87,50 @@ function Analytics() {
                                     </div>
                                     <div className="statBox">
                                         <p className="statLabel">Win Prob</p>
-                                        <p className="statValue">{(data.prediction.probability * 100).toFixed(0)}%</p>
+                                        <p className="statValue accent">{(data.prediction.probability * 100).toFixed(0)}%</p>
                                     </div>
                                     <div className="statBox">
                                         <p className="statLabel">Player to Watch</p>
                                         <p className="statValue">{data.home_player.name}</p>
                                         <p className="statSub">{data.home_player.pts} pts · {data.home_player.ast} ast · {data.home_player.reb} reb</p>
                                     </div>
-
-                                    <div className=" statBox">
-                    <p className="statLabel">Player to Watch (Away)</p>
-                    <p className="statValue">{data.away_player.name}</p>
-                    <p className="statSub">{data.away_player.pts} pts · {data.away_player.ast} ast · {data.away_player.reb} reb</p>
-                </div>
+                                    <div className="statBox">
+                                        <p className="statLabel">Player to Watch (Away)</p>
+                                        <p className="statValue">{data.away_player.name}</p>
+                                        <p className="statSub">{data.away_player.pts} pts · {data.away_player.ast} ast · {data.away_player.reb} reb</p>
+                                    </div>
                                 </div>
                             )}
                         </div>
 
                     </div>
                 </div>
-                <div className="secondCard bottomGrid">
-    {getTeamData.map((team) => (
-        <p key={team.id}>
-            {team.team_name} — {team.net_rating}
-        </p>
-    ))}
 
+                <div className="secondCard">
+                    <p className="sectionLabel">Best Turnover Rates (Net Rating)</p>
+                    <table className="ratingTable">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Team</th>
+                                <th>Net Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {getTeamData.map((team, i) => (
+                                <tr key={team.id}>
+                                    <td>
+                                        <span className={`rankBadge rank-${i + 1}`}>{i + 1}</span>
+                                    </td>
+                                    <td className="teamCell">{team.team_name}</td>
+                                    <td className="ratingCell">{team.net_rating.toFixed(1)}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
 
             </div>
-
-
-
         </main>
     )
 }

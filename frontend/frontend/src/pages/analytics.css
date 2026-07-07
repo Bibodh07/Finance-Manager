@@ -231,3 +231,84 @@
     width: 50%;
     border-radius: 15px;
 }
+
+/* ---------- replaces the old .secondCard rule ---------- */
+
+.secondCard {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    width: 50%;
+}
+
+.secondCardTitle {
+    font-family: 'Ubuntu Mono', monospace;
+    color: #f97316;
+    font-size: 0.9rem;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.ratingTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ratingTable thead th {
+    text-align: left;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #8892a4;
+    padding: 0 1rem 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ratingTable tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+.ratingTable tbody tr:hover {
+    background-color: rgba(0, 180, 216, 0.06);
+}
+
+.ratingTable td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 0.95rem;
+}
+
+.ratingTable tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.teamCell {
+    font-weight: 600;
+    color: white;
+}
+
+.ratingCell {
+    color: #00b4d8;
+    font-weight: 600;
+}
+
+.rankBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #ccd6e0;
+}
+
+.rank-1 { background-color: rgba(249, 115, 22, 0.2); color: #f97316; }
+.rank-2 { background-color: rgba(0, 180, 216, 0.2); color: #00b4d8; }
+.rank-3 { background-color: rgba(255, 255, 255, 0.12); color: #ccd6e0; }
