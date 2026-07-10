@@ -107,7 +107,7 @@ function Analytics() {
                 </div>
 
                 <div className="secondCard">
-                    <p className="sectionLabel">Best Turnover Rates (Net Rating)</p>
+                    <p className="secondCardTitle sectionLabel">Best Turnover Rates (Net Rating)</p>
                     <table className="ratingTable">
                         <thead>
                             <tr>
@@ -129,6 +129,15 @@ function Analytics() {
                         </tbody>
                     </table>
                 </div>
+
+                 <div className="thirdCard"> 
+
+                 </div>
+
+                 <div className="fourthCard">
+
+                 </div>
+
 
             </div>
         </main>
