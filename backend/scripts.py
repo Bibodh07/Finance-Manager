@@ -477,6 +477,9 @@ def team_stats():
         stats = json.load(f)
     return jsonify(stats)
 
+
+
+
 @app.route("/team-b2b")
 def team_b2b():
     conn = get_connection()
@@ -612,7 +615,22 @@ def game_analytics(home_team, away_team):
 
     
 
+@app.route("/player-analytics")
+def getPlayerAnalytics():
 
+    with psycopg2.connect(
+        dbname=os.getenv("data_base"),
+        user=os.getenv("dbuser"),
+        password=os.getenv("dbpassword"),
+        host=os.getenv("dbhost"),
+        port=int(os.getenv("dbport"))
+    ) as conn:
+        player_df = pd.read_sql(
+            "SELECT * FROM playerDB",
+            conn,
+
+        )
+    return player_df
 
 
 
