@@ -6,9 +6,7 @@ import os
 load_dotenv(find_dotenv())
 
 
-
-
-def get_teamOdds():
+def getPlayerAnalytics():
 
     with psycopg2.connect(
         dbname=os.getenv("data_base"),
@@ -18,13 +16,31 @@ def get_teamOdds():
         port=int(os.getenv("dbport"))
     ) as conn:
         player_df = pd.read_sql(
-            "SELECT * FROM eloratings",
+            "SELECT * FROM playerDB ORDER BY overall_score DESC LIMIT 5",
             conn,
 
         )
-    player_df["net_rating"] = (player_df["elo_after"]) - (player_df["elo_before"])
-    print(player_df)        
+
+    print(player_df)
+    return player_df
 
 
+def getPlayerAnalyticsOfAparticularPlayer(name):
 
-get_teamOdds()
+    with psycopg2.connect(
+        dbname=os.getenv("data_base"),
+        user=os.getenv("dbuser"),
+        password=os.getenv("dbpassword"),
+        host=os.getenv("dbhost"),
+        port=int(os.getenv("dbport"))
+    ) as conn:
+        player_df = pd.read_sql(
+            "SELECT * FROM playerDB WHERE name = %s",
+            conn,
+            params=(name,)
+        )
+
+    print(player_df)
+    return player_df
+
+getPlayerAnalyticsOfAparticularPlayer("Stephen Curry")

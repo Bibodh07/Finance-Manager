@@ -626,11 +626,36 @@ def getPlayerAnalytics():
         port=int(os.getenv("dbport"))
     ) as conn:
         player_df = pd.read_sql(
-            "SELECT * FROM playerDB",
+            "SELECT * FROM playerDB ORDER BY overall_score DESC LIMIT 5",
             conn,
 
         )
+
+  
+    return jsonify(player_df.to_dict(orient="records"))
+
+
+
+@app.route("/game-analytics/<name>")
+def getPlayerAnalyticsOfAparticularPlayer(name):
+
+    with psycopg2.connect(
+        dbname=os.getenv("data_base"),
+        user=os.getenv("dbuser"),
+        password=os.getenv("dbpassword"),
+        host=os.getenv("dbhost"),
+        port=int(os.getenv("dbport"))
+    ) as conn:
+        player_df = pd.read_sql(
+            "SELECT * FROM playerDB WHERE name = %s",
+            conn,
+            params=(name,)
+        )
+
+    print(player_df)
     return player_df
+
+
 
 
 

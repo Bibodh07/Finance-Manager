@@ -38,9 +38,22 @@ function GETOddsData({ setTeamData }) {
     return null
 }
 
+
+function GETPlayerData({ setPlayerData }) {
+    useEffect(() =>{
+        axios
+        .get("http://127.0.0.1:5000/player-analytics")
+        .then(res => setPlayerData(res.data))
+        .catch(err => console.error(err))
+    })
+}
+
+
+
 function Analytics() {
     const [data, setData] = useState(null)
     const [getTeamData, setTeamData] = useState([])
+    const [playerData, setPlayerData] = useState([])
     const selectedTeam = "Boston Celtics"
     const opponent = "Los Angeles Lakers"
 
@@ -54,6 +67,10 @@ function Analytics() {
 
             <GETOddsData
                 setTeamData={setTeamData}
+            />
+
+            <GETPlayerData
+                setPlayerData={setPlayerData}
             />
 
             <div className="dashboard">
@@ -130,7 +147,50 @@ function Analytics() {
                     </table>
                 </div>
 
-                 <div className="thirdCard"> 
+                 <div className="thirdCard">
+
+                     <p className="secondCardTitle sectionLabel">Best Players</p>
+
+                    <table className="ratingTable">
+                        <thead>
+                            <tr>
+                                <th>Player ID</th>
+                                <th>Player Name</th>
+                                <th>Impact rating</th>
+                                <th>Production rating</th>
+                                <th>Overall rating</th>
+                            </tr>
+                        </thead>
+
+
+                    <tbody>
+
+                        {playerData.map((player, i) => (
+
+                            <tr key={player.id}>
+
+                                <td>
+                                    <span className={`rankBadge rank-${i + 1}`}>{i + 1}</span>
+                                </td>
+                                <td className="playerName fontAppearance">{player.name}</td>
+                                <td className="impactScore fontStatAppearance">{player.impact_score}</td>
+                                <td className="productionScore fontStatAppearance">{player.production_score}</td>
+                                <td className="overallScore fontStatAppearance">{player.overall_score}</td>
+
+
+                            </tr>
+
+
+  
+                        ))}
+
+                    </tbody>
+
+
+
+                </table>
+
+
 
                  </div>
 

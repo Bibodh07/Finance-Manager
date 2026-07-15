@@ -332,3 +332,16 @@
     padding: 1.5rem 2rem;
     width: 50%;
 }
+
+.fontAppearance{
+
+    font-weight: 600;
+    color: white;
+
+}
+
+.fontStatAppearance{
+
+        color: #00b4d8;
+    font-weight: 600;
+}
