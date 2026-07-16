@@ -131,6 +131,7 @@ function Analytics() {
                                 <th>Rank</th>
                                 <th>Team</th>
                                 <th>Net Rating</th>
+                                <th>Current Elo</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -141,6 +142,7 @@ function Analytics() {
                                     </td>
                                     <td className="teamCell">{team.team_name}</td>
                                     <td className="ratingCell">{team.net_rating.toFixed(1)}</td>
+                                    <td className="ratingCell">{(team.elo_after).toFixed(1)}</td>
                                 </tr>
                             ))}
                         </tbody>
@@ -173,9 +175,9 @@ function Analytics() {
                                     <span className={`rankBadge rank-${i + 1}`}>{i + 1}</span>
                                 </td>
                                 <td className="playerName fontAppearance">{player.name}</td>
-                                <td className="impactScore fontStatAppearance">{player.impact_score}</td>
-                                <td className="productionScore fontStatAppearance">{player.production_score}</td>
-                                <td className="overallScore fontStatAppearance">{player.overall_score}</td>
+                                <td className="impactScore fontStatAppearance">{(player.impact_score * 100).toFixed(2)}</td>
+                                <td className="productionScore fontStatAppearance">{(player.production_score * 100).toFixed(2)}</td>
+                                <td className="overallScore fontStatAppearance">{(player.overall_score * 100).toFixed(2)}</td>
 
 
                             </tr>
