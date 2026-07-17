@@ -141,8 +141,8 @@ function Analytics() {
                                         <span className={`rankBadge rank-${i + 1}`}>{i + 1}</span>
                                     </td>
                                     <td className="teamCell">{team.team_name}</td>
-                                    <td className="ratingCell">{team.net_rating.toFixed(1)}</td>
-                                    <td className="ratingCell">{(team.elo_after).toFixed(1)}</td>
+                                    <td className="ratingCell">{team.net_rating.toFixed(3)}</td>
+                                    <td className="ratingCell">{(team.elo_after).toFixed(3)}</td>
                                 </tr>
                             ))}
                         </tbody>
