@@ -3,6 +3,7 @@ import "./analytics.css";
 import axios from 'axios';
 import BOS from '../pictures/BOS.png'
 import LAL from '../pictures/LAL.png'
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const LOGOS = {
     "Boston Celtics": BOS,
@@ -45,15 +46,25 @@ function GETPlayerData({ setPlayerData }) {
         .get("http://127.0.0.1:5000/player-analytics")
         .then(res => setPlayerData(res.data))
         .catch(err => console.error(err))
-    })
+    }, [])
 }
 
+
+function GETScatterData({ setScatterData }) {
+    useEffect(() =>{
+        axios
+        .get("http://127.0.0.1:5000/scatter-data")
+        .then(res => setScatterData(res.data))
+        .catch( err => console.log(err))
+    }, [])
+}
 
 
 function Analytics() {
     const [data, setData] = useState(null)
     const [getTeamData, setTeamData] = useState([])
     const [playerData, setPlayerData] = useState([])
+    const [scatterData, setScatterData] = useState([])
     const selectedTeam = "Boston Celtics"
     const opponent = "Los Angeles Lakers"
 
@@ -72,6 +83,10 @@ function Analytics() {
             <GETPlayerData
                 setPlayerData={setPlayerData}
             />
+
+            <GETScatterData
+             setScatterData={setScatterData}
+             />
 
             <div className="dashboard">
                 <div className="topCard">
@@ -197,6 +212,45 @@ function Analytics() {
                  </div>
 
                  <div className="fourthCard">
+
+<ResponsiveContainer width="100%" height={350}>
+    <ScatterChart margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
+        <CartesianGrid strokeDasharray="3 3" />
+<XAxis 
+    dataKey="avg_point_scored" 
+    type="number" 
+    name="Points Scored"
+    domain={['dataMin - 2', 'dataMax + 2']}
+    tickFormatter={(value) => value.toFixed(0)}
+    tick={{ fill: '#8892a4', fontSize: 11 }}
+/>
+<YAxis 
+    dataKey="avg_point_allowed" 
+    type="number" 
+    name="Points Allowed"
+    domain={['dataMin - 2', 'dataMax + 2']}
+    tickFormatter={(value) => value.toFixed(0)}
+    tick={{ fill: '#8892a4', fontSize: 11 }}
+/>
+<Tooltip 
+    cursor={{ strokeDasharray: '3 3' }}
+    content={({ payload }) => {
+        if (!payload || !payload.length) return null
+        const point = payload[0].payload
+        return (
+            <div style={{ backgroundColor: '#1e2a3a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', padding: '10px 14px' }}>
+                <p style={{ color: '#ffffff', margin: '0 0 4px', fontWeight: 600 }}>{point.team}</p>
+                <p style={{ color: '#f97316', margin: 0, fontSize: 13 }}>Points Scored: {point.avg_point_scored.toFixed(1)}</p>
+                <p style={{ color: '#00b4d8', margin: 0, fontSize: 13 }}>Points Allowed: {point.avg_point_allowed.toFixed(1)}</p>
+            </div>
+        )
+    }}
+/>
+        <Scatter data={scatterData} fill="#00b4d8" />
+    </ScatterChart>
+</ResponsiveContainer>
+
+
 
                  </div>
 

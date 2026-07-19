@@ -652,9 +652,20 @@ def getPlayerAnalyticsOfAparticularPlayer(name):
             params=(name,)
         )
 
-    print(player_df)
+
     return player_df
 
+
+
+
+
+@app.route("/scatter-data")
+def getScatterPlotData():
+        team_df = pd.read_json("stats.json").T
+        team_df = team_df.loc[:, ["avg_point_scored", "avg_point_allowed"]]
+        team_df = team_df.reset_index().rename(columns={"index": "team"})
+
+        return jsonify(team_df.to_dict(orient="records"))
 
 
 
