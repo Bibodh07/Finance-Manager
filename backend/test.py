@@ -52,4 +52,12 @@ def getScatterPlotData():
 
         print(team_df)
 
-getScatterPlotData()
+
+
+
+def getBarChartData(team):
+        team_df = pd.read_json("stats.json").T
+        team_df = team_df.loc[team, ["home_wins", "away_wins", "avgHomePointAllowed", "avgAwayPointAllowed", "avgHomePointScored", "avgAwayPointScored"]]
+        print(team_df)
+
+getBarChartData('Oklahoma City Thunder')

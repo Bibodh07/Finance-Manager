@@ -670,6 +670,38 @@ def getScatterPlotData():
 
 
 
+@app.route("/barChart-data/<team>")
+
+def bar_chart_data(team):
+    with open("stats.json") as f:
+        stats = json.load(f)
+
+    team_stats = stats[team]
+
+    data = [
+            {
+        "category": "Scored",
+        "home": round(team_stats["avgHomePointScored"], 1),
+        "away": round(team_stats["avgAwayPointScored"], 1)
+            },
+            {
+        "category": "Allowed",
+        "home": round(team_stats["avgHomePointAllowed"], 1),
+        "away": round(team_stats["avgAwayPointAllowed"], 1)
+            },
+            {
+        "category": "Wins",
+        "home": team_stats["home_wins"],
+        "away": team_stats["away_wins"]
+            }
+        ]
+    
+
+    return jsonify(data)
+
+
+
+
 
 
 if __name__ == "__main__":
