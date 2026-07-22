@@ -701,6 +701,27 @@ def bar_chart_data(team):
 
 
 
+@app.route("/master-table")
+def master_table():
+    limit = request.args.get("limit", default=10, type=int)
+
+    with open("stats.json") as f:
+        stats = json.load(f)
+
+    data = []
+    for team, s in stats.items():
+        data.append({
+            "team": team,
+            "elo": round(s["elo"], 1),
+            "win_pct": round((s["total_wins"] / s["games_played"]) * 100, 1),
+            "avg_scored": round(s["avg_point_scored"], 1),
+            "avg_allowed": round(s["avg_point_allowed"], 1),
+            "net_rating": round(s["avg_point_diff"], 1)
+        })
+
+    data.sort(key=lambda x: x["elo"], reverse=True)
+    return jsonify(data[:limit])
+
 
 
 
