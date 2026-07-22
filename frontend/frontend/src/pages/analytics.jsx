@@ -154,7 +154,7 @@ function Analytics() {
 
                         {/* Right — fixture + stats */}
                         <div className="fixtureSection">
-                            <p className="sectionLabel">Latest Fixture</p>
+                            <p className="sectionLabel secondCardTitle">Latest Fixture</p>
                             <div className="fixtureHeader">
                                 <img src={LOGOS[selectedTeam]} alt={selectedTeam} className="fixtureLogo" />
                                 <p className="fixtureTitle">VS</p>
