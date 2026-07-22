@@ -4,7 +4,7 @@ import axios from 'axios';
 import BOS from '../pictures/BOS.png'
 import LAL from '../pictures/LAL.png'
 import { ScatterChart, BarChart, Bar, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import EloGraph from "../components/eloGraph";
 const LOGOS = {
     "Boston Celtics": BOS,
     "Los Angeles Lakers": LAL
@@ -311,20 +311,28 @@ function Analytics() {
                  </div>
 
 
-  <div className="fifthCard">
-    <h3 className="BarChartTitle">Team: {selectedTeam}</h3>
-    <ResponsiveContainer width="100%" height={350}>
-<BarChart data={barChartData}>
-    <CartesianGrid strokeDasharray="3 3" />
-    <XAxis dataKey="category" tick={{ fill: '#8892a4', fontSize: 11 }} />
-    <YAxis tick={{ fill: '#8892a4' }} />
-    <Tooltip contentStyle={{ backgroundColor: '#1e2a3a', border: '1px solid rgba(255,255,255,0.1)' }} />
-    <Legend />
-    <Bar dataKey="home" fill="#00b4d8" radius={[4, 4, 0, 0]} name="Home" />
-    <Bar dataKey="away" fill="#f97316" radius={[4, 4, 0, 0]} name="Away" />
-</BarChart>
-    </ResponsiveContainer>
-</div>
+                    <div className="fifthCard">
+                        <h3 className="BarChartTitle">Team: {selectedTeam}</h3>
+                                <ResponsiveContainer width="100%" height={350}>
+                                    <BarChart data={barChartData}>
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="category" tick={{ fill: '#8892a4', fontSize: 11 }} />
+                                    <YAxis tick={{ fill: '#8892a4' }} />
+                                    <Tooltip contentStyle={{ backgroundColor: '#1e2a3a', border: '1px solid rgba(255,255,255,0.1)' }} />
+                        <Legend />
+                                    <Bar dataKey="home" fill="#00b4d8" radius={[4, 4, 0, 0]} name="Home" />
+                                    <Bar dataKey="away" fill="#f97316" radius={[4, 4, 0, 0]} name="Away" />
+                                    </BarChart>
+                                            </ResponsiveContainer>
+                        </div>
+
+
+                        <div className="sixthCard">
+                            <EloGraph  team={"BOS"} />
+                        </div>
+
+
+
 
 
             </div>
