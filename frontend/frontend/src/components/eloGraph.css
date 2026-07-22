@@ -5,4 +5,9 @@
     height: 450px;
     border-radius: 15px;
     background-color: transparent;
+   border: none;
+}
+
+.chartTitle{
+    color:#f97316 ;
 }

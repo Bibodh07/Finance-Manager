@@ -312,7 +312,7 @@ function Analytics() {
 
 
                     <div className="fifthCard">
-                        <h3 className="BarChartTitle">Team: {selectedTeam}</h3>
+                        <h3 className="BarChartTitle ">Team: {selectedTeam}</h3>
                                 <ResponsiveContainer width="100%" height={350}>
                                     <BarChart data={barChartData}>
                                     <CartesianGrid strokeDasharray="3 3" />
