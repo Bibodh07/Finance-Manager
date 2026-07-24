@@ -80,6 +80,19 @@ function Analytics() {
     const selectedTeam = "Boston Celtics"
     const opponent = "Los Angeles Lakers"
 
+    const[tableData, setTabledata] = useState([])
+    const [showAll, setShowAll] = useState(false);
+
+    useEffect (() => {
+
+        const limit = showAll ? 30 : 10;
+        axios
+            .get(`http://127.0.0.1:5000/master-table?limit=${limit}`)
+            .then(res => setTabledata(res.data))
+            .catch(err => console.log(err))
+
+    }, [])
+
 
     const BarChart2 = () =>{
         return (
@@ -110,6 +123,13 @@ function Analytics() {
             </BarChart>
         )
     }
+
+      const getRowClass = (elo) => {
+  if (elo >= 1600) return "row-green";
+  if (elo >= 1400) return "row-yellow";
+  return "row-red";
+  };
+
 
 
 
@@ -329,6 +349,48 @@ function Analytics() {
 
                         <div className="sixthCard">
                             <EloGraph  team={"BOS"} />
+                        </div>
+
+
+
+                        <div className="seventhCard">
+                                            <div className="tableWrapper">
+                <div className="masterTable">
+                    <thead>
+                        <th>Team</th>
+                        <th>Power rating</th>
+                        <th>Win%</th>
+                        <th>Average Point Scored</th>
+                        <th>Average Point Allowed</th>
+                        <th>Net Rating</th>                    
+                    </thead>
+                    <tbody>
+                        {tableData.map((team) =>{
+
+
+                                return (
+
+                                    <tr key={team.team} className={getRowClass(team.elo)}>
+
+                                        <td>{team.team}</td>
+                                        <td>{team.elo}</td>
+                                        <td>{team.win_pct}</td>
+                                        <td>{team.avg_scored}</td>
+                                        <td>{team.avg_allowed}</td>
+                                        <td>{team.net_rating}</td>
+
+
+
+                                    </tr>
+
+                                )})
+
+                        }
+                    </tbody>
+                </div>
+            </div>
+                            
+
                         </div>
 
 
