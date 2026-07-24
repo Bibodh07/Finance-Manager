@@ -91,7 +91,7 @@ function Analytics() {
             .then(res => setTabledata(res.data))
             .catch(err => console.log(err))
 
-    }, [])
+    }, [showAll])
 
 
     const BarChart2 = () =>{
@@ -354,42 +354,36 @@ function Analytics() {
 
 
                         <div className="seventhCard">
-                                            <div className="tableWrapper">
-                <div className="masterTable">
-                    <thead>
-                        <th>Team</th>
-                        <th>Power rating</th>
-                        <th>Win%</th>
-                        <th>Average Point Scored</th>
-                        <th>Average Point Allowed</th>
-                        <th>Net Rating</th>                    
-                    </thead>
-                    <tbody>
-                        {tableData.map((team) =>{
 
-
-                                return (
-
-                                    <tr key={team.team} className={getRowClass(team.elo)}>
-
-                                        <td>{team.team}</td>
-                                        <td>{team.elo}</td>
-                                        <td>{team.win_pct}</td>
-                                        <td>{team.avg_scored}</td>
-                                        <td>{team.avg_allowed}</td>
-                                        <td>{team.net_rating}</td>
-
-
-
-                                    </tr>
-
-                                )})
-
-                        }
-                    </tbody>
-                </div>
-            </div>
-                            
+                            <div className="tableWrapper">
+    <table className="ratingTable">
+        <thead className="masterRow">
+            <tr className="tableHeader">
+                <th className="Team">Team</th>
+                <th>Power Rating</th>
+                <th>Win%</th>
+                <th>Avg Scored</th>
+                <th>Avg Allowed</th>
+                <th>Net Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            {tableData.map((team) => (
+                <tr key={team.team} className={getRowClass(team.elo)}>
+                    <td>{team.team}</td>
+                    <td>{team.elo}</td>
+                    <td>{team.win_pct}%</td>
+                    <td>{team.avg_scored}</td>
+                    <td>{team.avg_allowed}</td>
+                    <td className={team.net_rating >= 0 ? "positive" : "negative"}>
+                        {team.net_rating >= 0 ? "+" : ""}{team.net_rating}
+                    </td>
+                </tr>
+            ))}
+        </tbody>
+    </table>
+</div>
+     
 
                         </div>
 

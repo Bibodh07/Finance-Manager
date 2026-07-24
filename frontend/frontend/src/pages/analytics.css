@@ -388,3 +388,22 @@
 
 
 }
+
+
+.tableWrapper{
+    width: 100%;
+    color: #00b4d8;
+}
+
+.ratingTable thead th {
+    text-align: left;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #8892a4;
+    padding: 0 1rem 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.8rem;
+}
+
