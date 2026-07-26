@@ -388,6 +388,14 @@ function Analytics() {
                         </div>
 
 
+                        <div className="eigthCard">
+                               <h1>Upset Counter</h1>
+
+
+
+                        </div>
+
+
 
 
 
