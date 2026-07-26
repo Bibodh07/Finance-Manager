@@ -77,6 +77,7 @@ function Analytics() {
     const [playerData, setPlayerData] = useState([])
     const [scatterData, setScatterData] = useState([])
     const [barChartData, setBarChartData] = useState([])
+    const [upSetCounter, setupSetCounter] = useState(0)
     const selectedTeam = "Boston Celtics"
     const opponent = "Los Angeles Lakers"
 
@@ -390,6 +391,11 @@ function Analytics() {
 
                         <div className="eigthCard">
                                <h1>Upset Counter</h1>
+
+                                <div className="h2">
+                                    {upSetCounter}
+                                </div>
+
 
 
 
