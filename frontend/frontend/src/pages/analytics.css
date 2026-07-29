@@ -442,7 +442,7 @@
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    background: linear-gradient(180deg, #0f1c33, #0a1420);
+    background:  linear-gradient(180deg, #16233d, #0f1c33);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -480,13 +480,13 @@
 }
 
 .latestUpsetLabel {
-    font-size: 1rem;
-    letter-spacing: 0.1em;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: #8892a4;
     font-weight: 400;
+    white-space: nowrap;
 }
-
 .latestUpsetContent {
     display: flex;
     flex-direction: column;
@@ -523,4 +523,157 @@
     font-size: 0.9rem;
     color: #8892a4;
     margin-top: 0.5rem;
+}
+
+.metricSlideshow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    height: 100%;
+}
+
+.metricDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    transition: opacity 0.3s ease;
+}
+
+.metricLabel {
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8892a4;
+}
+
+.metricValue {
+    font-size: 2.5rem;
+    color: #64b5f6;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+
+.metricDots {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.metricDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.2s ease;
+}
+
+.metricDot.active {
+    background-color: #64b5f6;
+    width: 18px;
+    border-radius: 4px;
+}
+
+.metricDots {
+    display: flex;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+}
+
+.ninthCard {
+    width: 100%;
+    grid-column: 3/5;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 0.85rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.footerLeft {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.updatedDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #4ade80;
+    box-shadow: 0 0 6px rgba(74, 222, 128, 0.7);
+}
+
+.updatedText {
+    font-size: 0.85rem;
+    color: #8892a4;
+    white-space: nowrap;
+}
+
+.updatedText strong {
+    color: #cbd5e1;
+    font-weight: 500;
+}
+
+.footerDivider {
+    width: 1px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+.footerRight {
+    flex: 1;
+    min-width: 0;
+}
+
+.methodologyText {
+    font-size: 0.8rem;
+    color: #6b7688;
+    line-height: 1.4;
+}
+
+.upsetTrend {
+    font-size: 0.85rem;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.trendUp {
+    color: #4ade80;
+}
+
+.trendDown {
+    color: #f87171;
+}
+
+.footerStat {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    flex-shrink: 0;
+}
+
+.footerStatValue {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #64b5f6;
+}
+
+.footerStatLabel {
+    font-size: 0.8rem;
+    color: #8892a4;
 }

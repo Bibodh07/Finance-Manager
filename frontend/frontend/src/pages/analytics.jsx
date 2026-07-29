@@ -10,6 +10,78 @@ const LOGOS = {
     "Los Angeles Lakers": LAL
 }
 
+const highlights = [
+    {
+        label: "Latest Upset",
+        underdog: "Hornets",
+        favorite: "Rockets",
+        meta: "12% win prob.",
+        score: "116–108",
+    },
+    {
+        label: "Closest Game",
+        underdog: "Cavaliers",
+        favorite: "Celtics",
+        meta: "Decided by 1",
+        score: "112–111",
+    },
+    {
+        label: "Biggest Blowout",
+        underdog: "Kings",
+        favorite: "Suns",
+        meta: "34 pt margin",
+        score: "128–94",
+    },
+];
+
+function GameHighlightSlideshow({ autoRotate = true, interval = 2000 }) {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [paused, setPaused] = useState(false);
+
+    useEffect(() => {
+        if (!autoRotate || paused) return;
+        const timer = setInterval(() => {
+            setActiveIndex((prev) => (prev + 1) % highlights.length);
+        }, interval);
+        return () => clearInterval(timer);
+    }, [autoRotate, interval, paused]);
+
+    const current = highlights[activeIndex];
+
+    return (
+        <div
+            className="smallRowAlpha"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+        >
+            <span className="latestUpsetLabel">{current.label}</span>
+
+            <div className="latestUpsetContent">
+                <div className="upsetTeams">
+                    <span className="underdog">{current.underdog}</span>
+                    <span className="vs">def.</span>
+                    <span className="favorite">{current.favorite}</span>
+                </div>
+                <div className="upsetMeta">
+                    <span className="odds">{current.meta}</span>
+                    <span className="score">{current.score}</span>
+                </div>
+            </div>
+
+            <div className="metricDots">
+                {highlights.map((h, i) => (
+                    <button
+                        key={h.label}
+                        className={`metricDot ${i === activeIndex ? "active" : ""}`}
+                        onClick={() => setActiveIndex(i)}
+                        aria-label={`Show ${h.label}`}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+}
+
 function GetDBdata({ setData, team1, team2 }) {
     useEffect(() => {
         axios
@@ -47,6 +119,8 @@ function GETPlayerData({ setPlayerData }) {
         .then(res => setPlayerData(res.data))
         .catch(err => console.error(err))
     }, [])
+
+    return null 
 }
 
 
@@ -57,6 +131,8 @@ function GETScatterData({ setScatterData }) {
         .then(res => setScatterData(res.data))
         .catch( err => console.log(err))
     }, [])
+
+    return null 
 }
 
 function GETBarChartData({ setBarChartData, team1 }) {
@@ -66,6 +142,8 @@ function GETBarChartData({ setBarChartData, team1 }) {
         .then(res => setBarChartData(res.data))
         .catch( err => console.log(err))
     }, [])
+
+    return null 
 }
 
 
@@ -83,6 +161,15 @@ function Analytics() {
 
     const[tableData, setTabledata] = useState([])
     const [showAll, setShowAll] = useState(false);
+
+    const [lastUpdated, setLastUpdated] = useState(null);
+    const [upsetTrend, setUpsetTrend] = useState(0); // positive = more upsets than last week
+    const [gamesTracked, setGamesTracked] = useState(0); // wire to real count from backend
+
+useEffect(() => {
+    // wherever your main data fetch resolves, e.g. inside master-table effect:
+    setLastUpdated(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+}, [tableData]); // or whatever signals "data refreshed"
 
     useEffect (() => {
 
@@ -393,28 +480,43 @@ function Analytics() {
         <h1>Upset Counter</h1>
     </div>
 
-    <div className="mainColumn">
-        <span className="upsetLabel">This Week</span>
-        <span className="upsetNumber">{upSetCounter}</span>
-    </div>
-
-    <div className="smallRowAlpha">
-        <span className="latestUpsetLabel">Latest Upset</span>
-        <div className="latestUpsetContent">
-            <div className="upsetTeams">
-                <span className="underdog">Hornets</span>
-                <span className="vs">def.</span>
-                <span className="favorite">Rockets</span>
-            </div>
-            <div className="upsetMeta">
-                <span className="odds">12% win prob.</span>
-                <span className="score">116–108</span>
-            </div>
-        </div>
-    </div>
+<div className="mainColumn">
+    <span className="upsetLabel">This Week</span>
+    <span className="upsetNumber">{upSetCounter}</span>
+    {upsetTrend !== 0 && (
+        <span className={`upsetTrend ${upsetTrend > 0 ? "trendUp" : "trendDown"}`}>
+            {upsetTrend > 0 ? "▲" : "▼"} {Math.abs(upsetTrend)} vs last week
+        </span>
+    )}
 </div>
 
+    <GameHighlightSlideshow autoRotate={true} interval={4000} />
 
+</div>
+<div className="ninthCard">
+    <div className="footerLeft">
+        <span className="updatedDot"></span>
+        <span className="updatedText">
+            Last updated <strong>{lastUpdated}</strong>
+        </span>
+    </div>
+
+    <div className="footerDivider"></div>
+
+    <div className="footerRight">
+        <span className="methodologyText">
+            Ratings are Elo-based power scores updated after each game;
+            win % reflects head-to-head model projections, not betting odds.
+        </span>
+    </div>
+
+    <div className="footerDivider"></div>
+
+    <div className="footerStat">
+        <span className="footerStatValue">{gamesTracked}</span>
+        <span className="footerStatLabel">games tracked</span>
+    </div>
+</div>
 
 
 
