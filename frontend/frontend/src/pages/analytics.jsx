@@ -388,18 +388,31 @@ function Analytics() {
 
                         </div>
 
+<div className="eigthCard">
+    <div className="mainRow">
+        <h1>Upset Counter</h1>
+    </div>
 
-                        <div className="eigthCard">
-                               <h1>Upset Counter</h1>
+    <div className="mainColumn">
+        <span className="upsetLabel">This Week</span>
+        <span className="upsetNumber">{upSetCounter}</span>
+    </div>
 
-                                <div className="h2">
-                                    {upSetCounter}
-                                </div>
-
-
-
-
-                        </div>
+    <div className="smallRowAlpha">
+        <span className="latestUpsetLabel">Latest Upset</span>
+        <div className="latestUpsetContent">
+            <div className="upsetTeams">
+                <span className="underdog">Hornets</span>
+                <span className="vs">def.</span>
+                <span className="favorite">Rockets</span>
+            </div>
+            <div className="upsetMeta">
+                <span className="odds">12% win prob.</span>
+                <span className="score">116–108</span>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
