@@ -1,0 +1,233 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+
+
+
+.dashboard {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 1.5rem;
+    padding: 2rem;
+    background-color: transparent;
+    width: 100vw;
+    border-radius: 50px;
+}
+
+.topCard {
+    /* main big card */
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 100%;
+    
+}
+
+.bottomGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto auto;
+    gap: 1.5rem;
+}
+
+.topCard {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 100%;
+    grid-column: 1 / 5;  
+    color: white;
+}
+
+.matchup {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.team img {
+    width: 100vh;
+    height: 100vw;
+    object-fit: contain;
+}
+
+
+
+.team p {
+    font-family: 'Ubuntu Mono', monospace;
+    /* color: #00b4d8; */
+    font-size: 1rem;
+    margin: 0;
+    columns: white;
+}
+
+.vsSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.vsSection p {
+    font-family: 'Ubuntu Mono', monospace;
+    color: #f97316;
+    font-size: 1.2rem;
+    margin: 0;
+    text-align: center;
+}
+
+.matchupLayout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.selectedTeam {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.teamLogo {
+    width: 25vh;
+    height: 25vw;
+    object-fit: contain;
+}
+
+.teamName {
+    font-family: 'Ubuntu Mono', monospace;
+    color: #00b4d8;
+    font-size: 1.1rem;
+    margin: 0;
+    text-align: center;
+}
+
+.fixtureSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.fixtureTitle {
+    font-family: 'Ubuntu Mono', monospace;
+    color: #f97316;
+    font-size: 1rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.statBox {
+    background-color: rgba(0, 180, 216, 0.05);
+    border: 1px solid rgba(0, 180, 216, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.statLabel {
+    font-size: 0.75rem;
+    color: #8892a4;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.statValue {
+    font-family: 'Ubuntu Mono', monospace;
+    color: #00b4d8;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.statSub {
+    font-size: 0.75rem;
+    color: #8892a4;
+    margin: 0;
+}
+
+.fixtureHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.fixtureLogo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.bothTeamsStats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.teamStats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.teamStatsTitle {
+    font-family: 'Ubuntu Mono', monospace;
+    color: #f97316;
+    font-size: 0.9rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.playerWatch {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.statBox:hover {
+    border-color: #00b4d8;
+}
+
+.fixtureTitle {
+    color: #f97316;
+}
+
