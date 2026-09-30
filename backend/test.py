@@ -61,3 +61,6 @@ def getBarChartData(team):
         print(team_df)
 
 getBarChartData('Oklahoma City Thunder')
+
+
+print("this is pure test")
