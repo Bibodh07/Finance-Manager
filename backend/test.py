@@ -63,4 +63,4 @@ def getBarChartData(team):
 getBarChartData('Oklahoma City Thunder')
 
 
-print("thi")
+print("hi")
