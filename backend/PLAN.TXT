@@ -1,0 +1,7 @@
+- Research and map out sports analytics plat forms, 
+models they use, and how I cna build my own
+
+-start pulling data and setting up end points. 
+
+- treat this as a predictions page, make the next one a kalshi + news page 
+- first complete the backend then complete the frontend
